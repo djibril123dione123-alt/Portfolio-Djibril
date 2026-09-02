@@ -56,4 +56,29 @@ Originals were never modified or moved. Processing scripts in `scratchpad/`.
 - `next@14.2.15` shipped with a security advisory → bump to latest patched 14.2.x before deploy.
 - Résumé PDF still carries the old "Expert Digital" positioning — needs the 2026 version.
 - G5 / Al Furqan / Nur have no real screenshots yet — SVG placeholders are intentional-looking but should be swapped for real captures.
-- `djibrildione.com` assumed as canonical domain — confirm before launch.
+- No production domain owned yet. Public origin is read from `NEXT_PUBLIC_SITE_URL`
+  (`src/lib/site.ts`); no canonical is emitted until it is set. Confirm the domain before deploy.
+
+---
+
+## V2 — visual & narrative refactor (structure unchanged)
+
+- **Typography rebalanced**: sans (Inter) is now the primary voice for all UI, headings,
+  body and labels. Fraunces (serif) is a contrast voice only — hero statement, Origin,
+  pull-quotes, case-study standfirsts, wordmark.
+- **Product evidence dominates the work sections** (`src/components/product/Product.tsx`:
+  `Screenshot`, `AnnotatedShot`, `CropWindow`, `DevicePair`, `EvidenceRow`). Each project
+  gets a bespoke staging — no repeated "text left / screenshot right" card.
+  - Hero: a **System Canvas** — layered real Samay Këur interfaces (desktop + phone + KPI crop).
+  - `home/work/FlagshipSamay` — full-width annotated dashboard + supporting shots.
+  - `home/work/MairieTransformation` — Manual → Structured DB → Search, as a labelled strip.
+  - `home/work/G5Operation` — "business first" narrative + module system + editorial KPI viz.
+- **Origin Story**: desktop sticky scroll (evolving visual per beat, "single agency →
+  multi-organization" rupture); clean vertical timeline on mobile.
+- **Density**: section padding `clamp(3.5rem,7vw,6rem)`; page height ~13.3k (was ~15k+).
+- **Section rhythm**: paper → paper → dim → paper → night → dim → cool → paper → dim → night.
+- **Depth without glass**: `.panel` (hairline border + soft shadow), project accent color
+  fields (`samay` / `mairie` / `commerce` washes), annotations, asymmetry.
+- Copy: removed defensive "not tutorial projects" / "I am not a senior engineer" → positive
+  framing. Samay date → "Late 2025 / early 2026". Al Furqan / Nur SVGs redrawn as confident
+  system diagrams (still clearly diagrams, swap-ready for real captures).

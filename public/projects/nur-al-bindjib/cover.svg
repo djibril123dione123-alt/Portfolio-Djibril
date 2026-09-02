@@ -1,41 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Nur Al-BinDjib — two paired users sharing state in realtime">
-  <rect width="1200" height="750" fill="#F6F3EC"/>
-  <rect x="0" y="0" width="1200" height="6" fill="#B34327"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Nur Al-BinDjib — architecture diagram: two paired users sharing realtime state with push">
+  <rect width="1200" height="760" fill="#EEEDF2"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#2E3A66"/>
 
-  <text x="72" y="92" font-family="ui-monospace, monospace" font-size="19" letter-spacing="3" fill="#8C3119">NUR AL-BINDJIB</text>
-  <text x="72" y="150" font-family="Georgia, serif" font-size="44" fill="#181611">Two users · one shared space</text>
+  <text x="64" y="70" font-family="ui-monospace, monospace" font-size="17" letter-spacing="2.5" fill="#2E3A66">NUR AL-BINDJIB — ARCHITECTURE DIAGRAM</text>
+  <text x="64" y="118" font-family="Georgia, serif" font-size="40" fill="#1B1E2B">Two users · one shared space</text>
 
-  <!-- pairing diagram -->
-  <g stroke="#C9C0AC" stroke-width="1.5" fill="none">
-    <circle cx="300" cy="420" r="90"/>
-    <circle cx="900" cy="420" r="90"/>
-  </g>
-  <g font-family="ui-monospace, monospace" font-size="14" fill="#6B6456" text-anchor="middle">
-    <text x="300" y="425">USER A</text>
-    <text x="900" y="425">USER B</text>
+  <!-- users -->
+  <g>
+    <circle cx="230" cy="360" r="86" fill="#2E3A66"/>
+    <circle cx="970" cy="360" r="86" fill="#2E3A66"/>
+    <text x="230" y="366" text-anchor="middle" font-family="ui-monospace, monospace" font-size="13" fill="#EEEDF2">USER A</text>
+    <text x="970" y="366" text-anchor="middle" font-family="ui-monospace, monospace" font-size="13" fill="#EEEDF2">USER B</text>
   </g>
 
-  <line x1="390" y1="420" x2="810" y2="420" stroke="#181611" stroke-width="2"/>
-  <rect x="520" y="392" width="160" height="56" rx="6" fill="#F0E4DC" stroke="#C9694E"/>
-  <text x="600" y="426" font-family="ui-monospace, monospace" font-size="13" fill="#8C3119" text-anchor="middle">INVITE CODE</text>
+  <!-- pairing link -->
+  <line x1="316" y1="360" x2="884" y2="360" stroke="#1B1E2B" stroke-width="2"/>
+  <rect x="520" y="332" width="160" height="56" rx="6" fill="#2E3A66"/>
+  <text x="600" y="366" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" fill="#EEEDF2">INVITE CODE</text>
 
-  <!-- shared progress ring -->
-  <g transform="translate(600,240)">
-    <circle r="46" fill="none" stroke="#DDD6C6" stroke-width="10"/>
-    <circle r="46" fill="none" stroke="#B34327" stroke-width="10" stroke-linecap="round"
-      stroke-dasharray="205 289" transform="rotate(-90)"/>
-    <text y="6" font-family="ui-monospace, monospace" font-size="15" fill="#181611" text-anchor="middle">shared</text>
+  <!-- shared state box -->
+  <rect x="430" y="150" width="340" height="120" rx="6" fill="#FFFFFF" stroke="#B9BAC8"/>
+  <text x="600" y="180" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" letter-spacing="1.5" fill="#6A6C82">SHARED STATE · SUPABASE + RLS</text>
+  <g fill="#2E3A66">
+    <rect x="452" y="196" width="90" height="10"/><rect x="452" y="216" width="140" height="10"/><rect x="452" y="236" width="110" height="10"/>
+  </g>
+  <circle cx="712" cy="216" r="30" fill="none" stroke="#B9BAC8" stroke-width="8"/>
+  <circle cx="712" cy="216" r="30" fill="none" stroke="#4B7BE0" stroke-width="8" stroke-linecap="round" stroke-dasharray="120 190" transform="rotate(-90 712 216)"/>
+
+  <line x1="600" y1="270" x2="600" y2="332" stroke="#B9BAC8" stroke-width="2"/>
+
+  <!-- push -->
+  <rect x="430" y="452" width="340" height="86" rx="6" fill="#2E3A66"/>
+  <text x="600" y="482" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" letter-spacing="1.5" fill="#EEEDF2">EDGE FUNCTION → WEB PUSH</text>
+  <text x="600" y="510" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" fill="#AEB4D6">notifies the other user, app open or not</text>
+  <line x1="600" y1="388" x2="600" y2="452" stroke="#B9BAC8" stroke-width="2"/>
+
+  <g font-family="ui-monospace, monospace" font-size="13" fill="#1B1E2B">
+    <text x="120" y="588">tasks &amp; assignment</text>
+    <text x="430" y="588">realtime progress</text>
+    <text x="700" y="588">deep-work timer</text>
+    <text x="930" y="588">installable PWA</text>
   </g>
 
-  <g font-family="ui-monospace, monospace" font-size="14" fill="#181611">
-    <text x="150" y="576">tasks</text>
-    <text x="300" y="576">assigned work</text>
-    <text x="520" y="576">realtime progress</text>
-    <text x="780" y="576">web push</text>
-    <text x="940" y="576">deep-work timer</text>
-  </g>
-
-  <line x1="72" y1="626" x2="1128" y2="626" stroke="#DDD6C6"/>
-  <text x="72" y="664" font-family="ui-monospace, monospace" font-size="14" fill="#6B6456">Installable PWA · service worker · notifications when the app is closed</text>
-  <text x="72" y="694" font-family="ui-monospace, monospace" font-size="13" fill="#948C7B">React · Supabase · Row-Level Security · RPC · Edge Functions · Web Push</text>
+  <line x1="64" y1="628" x2="1136" y2="628" stroke="#B9BAC8"/>
+  <text x="64" y="666" font-family="ui-monospace, monospace" font-size="13" fill="#5A5C70">Service worker · notifications when the app is closed · private product</text>
+  <text x="64" y="692" font-family="ui-monospace, monospace" font-size="12" fill="#8A8CA0">React · Supabase · Row-Level Security · RPC · Edge Functions · Web Push</text>
 </svg>

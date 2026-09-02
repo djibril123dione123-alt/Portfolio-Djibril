@@ -13,7 +13,7 @@ export const samayKeur: CaseStudy = {
     "Samay Këur is a property-management platform for rental agencies in Senegal. It began as a bespoke tool for one family agency, Confort Immo, and became a generalised, multi-tenant product once it was clear the same operational problem existed everywhere. This is the story of how it was discovered, understood, generalised and built.",
   role: "Founder · Product Builder · Full-Stack Developer",
   period: "December 2025 – present",
-  status: "Two real rental agencies in field testing",
+  status: "2 real-estate agencies currently testing the product",
   stack: [
     "React",
     "TypeScript",
@@ -40,8 +40,8 @@ export const samayKeur: CaseStudy = {
   facts: [
     { k: "Role", v: "Founder · Product Builder · Full-Stack Developer" },
     { k: "Timeline", v: "Started Dec 2025 · major build phase completed mid-Aug 2026" },
-    { k: "Current state", v: "Field testing + early commercialisation" },
-    { k: "Validation", v: "2 real rental agencies testing the product" },
+    { k: "Current state", v: "Field testing + early go-to-market" },
+    { k: "Validation", v: "2 real-estate agencies currently testing the product" },
     { k: "Predecessor", v: "Confort Immo Archi — 8 users, still in use" },
     { k: "Surface", v: "Web app + separate marketing site + mobile-responsive UI" },
   ],
@@ -80,7 +80,7 @@ export const samayKeur: CaseStudy = {
       items: [
         {
           src: "/projects/confort-immo/dashboard.webp",
-          alt: "Confort Immo Archi dashboard — portfolio, occupancy and revenue.",
+          alt: "Confort Immo Archi dashboard — portfolio, occupancy and income.",
           caption: "Confort Immo Archi — the agency dashboard.",
           width: C.w,
           height: C.h,
@@ -374,8 +374,8 @@ export const samayKeur: CaseStudy = {
       kicker: "11 — Validation",
       heading: "Where it actually stands",
       body: [
-        "The major build phase wrapped in mid-August 2026. Since then the work has been field testing and early commercialisation.",
-        "**Two real rental agencies are testing Samay Këur.** That is traction and validation on the ground — not a revenue claim. As of 25 August 2026 there are no paying clients yet; billing is expected to start the following month. When the first payment lands, the status moves from *pilot users* to *paying clients* — and not before.",
+        "The major build phase wrapped in mid-August 2026. Since then the work has been field testing and early go-to-market.",
+        "**2 real-estate agencies are currently testing the product.** That is validation on the ground — nothing more is claimed. As of 25 August 2026 it is in testing and not yet monetised; the move to paid use is expected the following month. The way this is described will only change once that is actually true.",
       ],
     },
   ],
@@ -383,10 +383,10 @@ export const samayKeur: CaseStudy = {
     "The domain is the moat, not the stack. Confort Immo taught me the rules of the trade; every framework decision after that was downstream of understanding leases, commission and owner net.",
     "Generalising a working tool is harder than building a new one. Every baked-in assumption from the single-agency version had to be found and made configurable without breaking the agency already relying on it.",
     "A document system deserves to be designed, not bolted on. In this business, the PDF is the product as much as the dashboard is.",
-    "Say exactly what is true. \"Two agencies testing\" is a stronger, more credible claim than a rounded-up number — and it's the one I can defend.",
+    "Say exactly what is true. \"2 agencies testing\" is a stronger, more credible claim than a rounded-up number — and it's the one I can defend.",
   ],
   disclaimers: [
     "Screenshots use demonstration data prepared for the Samay Këur marketing site, not real tenant records.",
-    "\"Two agencies in field testing\" reflects status on 25 August 2026. No paying clients as of that date.",
+    "\"2 real-estate agencies currently testing the product\" reflects status on 25 August 2026. The product is not yet monetised as of that date.",
   ],
 };

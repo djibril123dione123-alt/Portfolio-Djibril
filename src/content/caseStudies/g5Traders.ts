@@ -1,5 +1,16 @@
 import type { CaseStudy } from "./types";
 
+/**
+ * G5 Traders has real product screenshots that will be added to the workspace.
+ * SWAP WHEN AVAILABLE: replace the `hero` figure below (and the card cover in
+ * projects.ts) with:
+ *   src: "/projects/g5-traders/dashboard.webp"  (or treasury.webp)
+ *   width/height: the real pixel size
+ * and drop the "editorial visualization" wording from alt/caption.
+ * Until then the hero is an EDITORIAL DATA VISUALISATION built from the Master
+ * Profile snapshot figures — it is not, and is not presented as, the app UI.
+ */
+
 export const g5Traders: CaseStudy = {
   slug: "g5-traders",
   name: "G5 Traders",
@@ -13,8 +24,9 @@ export const g5Traders: CaseStudy = {
   links: [{ label: "g5traders.lovable.app", href: "https://g5traders.lovable.app", kind: "live" }],
   hero: {
     src: "/projects/g5-traders/treasury.svg",
-    alt: "G5 Traders treasury snapshot — total treasury, common cash, transit debt and partner receivables on 25 August 2026.",
-    caption: "Treasury view — operational snapshot on 25 August 2026, 16:31. Sales were still running.",
+    alt: "Editorial data visualisation of the G5 Traders 25 August 2026 snapshot: total treasury, common cash box, total sales and gross margin. Not a screenshot of the application.",
+    caption:
+      "Editorial visualisation of the venture's figures on 25 August 2026, 16:31 — not the app interface. Sales were still running.",
     width: 1200,
     height: 750,
   },

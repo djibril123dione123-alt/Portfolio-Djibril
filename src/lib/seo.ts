@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { profile } from "@/content/profile";
-
-const BASE = profile.meta.domain;
+import { SITE_URL, hasPublicDomain } from "@/lib/site";
 
 export function pageMeta(opts: {
   title: string;
@@ -9,16 +8,15 @@ export function pageMeta(opts: {
   path?: string;
   ogImage?: string;
 }): Metadata {
-  const url = opts.path ? `${BASE}${opts.path}` : BASE;
+  const path = opts.path ?? "/";
   const image = opts.ogImage ?? "/og/default.png";
-  return {
+
+  const meta: Metadata = {
     title: opts.title,
     description: opts.description,
-    alternates: { canonical: url },
     openGraph: {
       title: opts.title,
       description: opts.description,
-      url,
       siteName: profile.meta.siteName,
       type: "website",
       images: [{ url: image, width: 1200, height: 630, alt: opts.title }],
@@ -30,4 +28,13 @@ export function pageMeta(opts: {
       images: [image],
     },
   };
+
+  // Only emit a canonical / absolute OG url once a real public domain is configured.
+  if (hasPublicDomain) {
+    const url = `${SITE_URL}${path}`;
+    meta.alternates = { canonical: url };
+    (meta.openGraph as { url?: string }).url = url;
+  }
+
+  return meta;
 }

@@ -9,11 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Warm editorial neutrals
         paper: {
           DEFAULT: "#F6F3EC",
-          dim: "#EEEADF",
-          deep: "#E4DECF",
+          dim: "#EFEBE0",
+          deep: "#E7E1D2",
+          cool: "#EDECE6",
         },
         ink: {
           DEFAULT: "#181611",
@@ -25,7 +25,6 @@ const config: Config = {
           DEFAULT: "#DDD6C6",
           strong: "#C9C0AC",
         },
-        // Single controlled accent: clay / burnt sienna
         clay: {
           DEFAULT: "#B34327",
           deep: "#8C3119",
@@ -33,10 +32,15 @@ const config: Config = {
           wash: "#F0E4DC",
         },
         night: {
-          DEFAULT: "#151309",
+          DEFAULT: "#141208",
           soft: "#211E14",
           line: "#3A3626",
+          faint: "#8B836E",
         },
+        // Project accent fields — used only as local tints inside a project's staging.
+        samay: { DEFAULT: "#0E3D2C", wash: "#E7EFE7", ink: "#0B2C20" },
+        mairie: { DEFAULT: "#1E6E86", wash: "#E4EEF1" },
+        commerce: { DEFAULT: "#8A5A22", wash: "#F1E9DC" },
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],
@@ -44,22 +48,23 @@ const config: Config = {
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       fontSize: {
-        kicker: ["0.72rem", { lineHeight: "1", letterSpacing: "0.18em" }],
-        "display-xl": ["clamp(2.85rem, 8vw, 6.25rem)", { lineHeight: "0.98", letterSpacing: "-0.022em" }],
-        "display-lg": ["clamp(2.35rem, 5.6vw, 4.25rem)", { lineHeight: "1.02", letterSpacing: "-0.02em" }],
-        "display-md": ["clamp(1.9rem, 4vw, 2.9rem)", { lineHeight: "1.06", letterSpacing: "-0.015em" }],
-        "title": ["clamp(1.3rem, 2.4vw, 1.7rem)", { lineHeight: "1.2", letterSpacing: "-0.01em" }],
-        "body-lg": ["1.1875rem", { lineHeight: "1.6" }],
+        kicker: ["0.72rem", { lineHeight: "1", letterSpacing: "0.16em" }],
+        "display-xl": ["clamp(2.6rem, 6vw, 4.75rem)", { lineHeight: "1.0", letterSpacing: "-0.025em" }],
+        "display-lg": ["clamp(2.1rem, 4.4vw, 3.35rem)", { lineHeight: "1.04", letterSpacing: "-0.022em" }],
+        "display-md": ["clamp(1.7rem, 3vw, 2.4rem)", { lineHeight: "1.08", letterSpacing: "-0.02em" }],
+        title: ["clamp(1.2rem, 2vw, 1.55rem)", { lineHeight: "1.22", letterSpacing: "-0.015em" }],
+        "body-lg": ["1.125rem", { lineHeight: "1.6" }],
       },
       maxWidth: {
-        prose: "40rem",
-        wide: "78rem",
-      },
-      spacing: {
-        section: "clamp(5rem, 12vw, 9.5rem)",
+        prose: "42rem",
+        wide: "88rem",
       },
       transitionTimingFunction: {
         editorial: "cubic-bezier(0.22, 1, 0.36, 1)",
+      },
+      boxShadow: {
+        panel: "0 1px 0 rgba(24,22,17,0.03), 0 18px 40px -28px rgba(24,22,17,0.28)",
+        float: "0 30px 60px -32px rgba(24,22,17,0.34)",
       },
       keyframes: {
         "fade-rise": {

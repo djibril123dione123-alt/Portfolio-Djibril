@@ -1,73 +1,84 @@
-import { Container, Kicker } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/Reveal";
 
 const STEPS = [
   {
     k: "Observe",
-    t: "Go where the work happens",
-    d: "Sit with the registers, the spreadsheets, the WhatsApp threads. Watch the informal habits no procedure documents.",
+    d: "Go where the work happens — the registers, the spreadsheets, the message threads, the habits no procedure documents.",
+    seen: ["Mairie de Ouakam"],
   },
   {
     k: "Understand",
-    t: "Learn the rules of the trade",
-    d: "What is a lease, a commission, an owner’s net, a partial payment. The vocabulary becomes concrete rules with edge cases.",
+    d: "Learn the rules of the trade until lease, commission, owner net and partial payment are concrete rules with edge cases.",
+    seen: ["Confort Immo", "Samay Këur"],
   },
   {
     k: "Structure",
-    t: "Turn the activity into data",
-    d: "Objects, relationships, states and the workflows that move between them. Keep the map small enough to hold in one head.",
+    d: "Turn the activity into objects, relationships, states and the workflows that move between them — a map small enough to hold.",
+    seen: ["Samay Këur", "G5 Traders"],
   },
   {
     k: "Design",
-    t: "Make it usable, not just correct",
-    d: "Information architecture, business forms, dashboards. The screen someone touches fifty times a day gets the most attention.",
+    d: "Make it usable, not just correct. The screen someone touches fifty times a day gets the most attention.",
+    seen: ["Samay Këur"],
   },
   {
     k: "Build",
-    t: "Ship the system solo",
-    d: "React, TypeScript, Supabase, PostgreSQL, RLS. Multi-user where it needs to be. Documents generated, not templated by hand.",
+    d: "Ship the system end-to-end, solo — React, TypeScript, Supabase, PostgreSQL, RLS. Documents generated, not hand-templated.",
+    seen: ["Samay Këur", "Nur Al-BinDjib", "Al Furqan"],
   },
   {
     k: "Ship & learn",
-    t: "Deploy, train, watch, adjust",
-    d: "Put it in real hands, train the people who’ll keep using it, and let actual usage decide what V2 is.",
+    d: "Deploy it into real hands, train the people who keep using it, and let actual usage decide what V2 is.",
+    seen: ["8 users at Confort Immo", "2 pilot agencies at Samay Këur"],
   },
 ];
 
 export function HowIBuild() {
   return (
-    <section id="method" className="scroll-mt-20 border-b border-line py-section">
-      <Container>
-        <Reveal>
-          <Kicker>How I build</Kicker>
-          <h2 className="mt-5 max-w-3xl text-display-md font-display text-balance">
-            The same sequence, in a municipality or a startup.
-          </h2>
-          <p className="mt-5 max-w-prose text-body-lg text-ink-soft text-pretty">
-            Not a framework I invented for a slide. It is what the projects have in common when the
-            stack is stripped away.
-          </p>
-        </Reveal>
+    <section id="method" className="scroll-mt-16 border-b border-line bg-paper-cool py-section">
+      <div className="container-wide">
+        <div className="grid gap-x-14 gap-y-10 md:grid-cols-[15rem_1fr]">
+          <Reveal>
+            <p className="kicker">How I build</p>
+            <h2 className="mt-4 text-display-md font-semibold tracking-tight text-balance">
+              The same sequence, in a municipality or a startup.
+            </h2>
+            <p className="mt-4 max-w-xs text-[0.95rem] leading-relaxed text-ink-muted">
+              Not a framework for a slide. It is what the projects have in common once the stack is
+              stripped away — and each step is proven by one of them.
+            </p>
+          </Reveal>
 
-        <ol className="mt-14 grid gap-px border border-line-strong bg-line-strong sm:grid-cols-2 lg:grid-cols-3">
-          {STEPS.map((s, i) => (
-            <Reveal as="li" key={s.k} delay={(i % 3) * 0.05}>
-              <div className="h-full bg-paper p-7">
-                <div className="flex items-baseline justify-between">
-                  <span className="font-mono text-[0.72rem] uppercase tracking-[0.16em] text-clay-deep">
-                    {s.k}
-                  </span>
-                  <span className="font-mono text-[0.72rem] text-ink-faint">
+          <Reveal delay={0.05}>
+            <ol className="border-l border-line-strong">
+              {STEPS.map((s, i) => (
+                <li key={s.k} className="relative grid grid-cols-[2.5rem_1fr] gap-x-4 pb-9 pl-6 last:pb-0">
+                  <span className="absolute -left-[6.5px] top-1 h-3 w-3 rounded-full border-2 border-clay bg-paper-cool" />
+                  <span className="font-mono text-[0.8rem] text-clay-deep">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                </div>
-                <h3 className="mt-4 font-display text-[1.2rem] text-balance">{s.t}</h3>
-                <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-soft">{s.d}</p>
-              </div>
-            </Reveal>
-          ))}
-        </ol>
-      </Container>
+                  <div>
+                    <h3 className="font-mono text-[0.82rem] uppercase tracking-[0.16em] text-ink">
+                      {s.k}
+                    </h3>
+                    <p className="mt-2 max-w-xl text-[0.98rem] leading-relaxed text-ink-soft">{s.d}</p>
+                    <div className="mt-2.5 flex flex-wrap gap-x-3 gap-y-1">
+                      {s.seen.map((p) => (
+                        <span
+                          key={p}
+                          className="font-mono text-[0.64rem] uppercase tracking-wide text-ink-faint"
+                        >
+                          ↳ {p}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+        </div>
+      </div>
     </section>
   );
 }

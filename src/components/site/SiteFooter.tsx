@@ -2,26 +2,48 @@ import Link from "next/link";
 import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
 
+const SECTIONS = [
+  { label: "Selected work", href: "/#work" },
+  { label: "Origin", href: "/#origin" },
+  { label: "How I build", href: "/#method" },
+  { label: "Capabilities", href: "/#about" },
+  { label: "About", href: "/about" },
+];
+
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-line bg-paper-dim">
-      <div className="container-wide grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr] md:py-20">
+    <footer className="border-t border-line bg-paper">
+      <div className="container-wide grid gap-10 py-14 md:grid-cols-[1.5fr_1fr_1fr] md:py-16">
         <div>
-          <p className="font-display text-display-md max-w-md text-balance">
-            {profile.northStar}
+          <p className="font-display text-2xl tracking-tight">
+            {profile.name}
+            <span className="text-clay">.</span>
           </p>
-          <a
-            href={`mailto:${profile.contact.email}`}
-            className="link-underline mt-6 inline-block text-body-lg"
-          >
-            {profile.contact.email}
-          </a>
+          <p className="mt-3 max-w-xs text-[0.9rem] leading-relaxed text-ink-muted">
+            {profile.title} · {profile.secondary}
+          </p>
+          <div className="mt-5 flex flex-col gap-1.5 text-[0.9rem]">
+            <a href={`mailto:${profile.contact.email}`} className="link-underline text-ink-soft hover:text-ink">
+              {profile.contact.email}
+            </a>
+            <a
+              href={profile.contact.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="link-underline text-ink-soft hover:text-ink"
+            >
+              LinkedIn ↗
+            </a>
+            <a href={profile.contact.resumeHref} className="link-underline text-ink-soft hover:text-ink">
+              Résumé (PDF)
+            </a>
+          </div>
         </div>
 
         <nav aria-label="Work" className="text-sm">
-          <p className="kicker">Selected work</p>
-          <ul className="mt-5 space-y-2.5">
+          <p className="kicker kicker-plain">Work</p>
+          <ul className="mt-4 space-y-2">
             {projects.map((p) => (
               <li key={p.slug}>
                 <Link href={`/work/${p.slug}`} className="link-underline text-ink-soft hover:text-ink">
@@ -32,38 +54,34 @@ export function SiteFooter() {
           </ul>
         </nav>
 
-        <nav aria-label="Elsewhere" className="text-sm">
-          <p className="kicker">Elsewhere</p>
-          <ul className="mt-5 space-y-2.5">
-            <li>
-              <a href={profile.contact.resumeHref} className="link-underline text-ink-soft hover:text-ink">
-                Résumé (PDF)
-              </a>
-            </li>
+        <nav aria-label="Sections" className="text-sm">
+          <p className="kicker kicker-plain">Navigate</p>
+          <ul className="mt-4 space-y-2">
+            {SECTIONS.map((s) => (
+              <li key={s.href}>
+                <Link href={s.href} className="link-underline text-ink-soft hover:text-ink">
+                  {s.label}
+                </Link>
+              </li>
+            ))}
             <li>
               <a
                 href="https://samaykeur.com"
-                className="link-underline text-ink-soft hover:text-ink"
                 target="_blank"
                 rel="noreferrer"
+                className="link-underline text-ink-soft hover:text-ink"
               >
-                samaykeur.com
+                samaykeur.com ↗
               </a>
-            </li>
-            <li>
-              <Link href="/about" className="link-underline text-ink-soft hover:text-ink">
-                About
-              </Link>
             </li>
           </ul>
         </nav>
       </div>
 
-      <div className="container-wide flex flex-col gap-2 border-t border-line py-6 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
-        <p>
-          © {year} {profile.name}. Built from scratch — Next.js, TypeScript, Tailwind.
-        </p>
+      <div className="container-wide flex flex-col gap-1.5 border-t border-line py-5 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
+        <p>© {year} {profile.name}</p>
         <p>Dakar, Senegal</p>
+        <p>Built from scratch — Next.js · TypeScript · Tailwind</p>
       </div>
     </footer>
   );

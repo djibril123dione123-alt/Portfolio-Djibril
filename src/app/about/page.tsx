@@ -59,6 +59,8 @@ export default function AboutPage() {
                 ["Programme", profile.education.program],
                 ["Track", profile.education.track],
                 ["Level", profile.education.level],
+                ["Before", profile.education.baccalaureate],
+                ["Languages", profile.languages.join(" · ")],
               ].map(([k, v]) => (
                 <div key={k} className="grid grid-cols-[7rem_1fr] gap-4 py-3.5">
                   <dt className="font-mono text-[0.72rem] uppercase tracking-wide text-ink-muted">
@@ -103,6 +105,14 @@ export default function AboutPage() {
                 className="link-underline text-[0.95rem]"
               >
                 {profile.contact.email}
+              </a>
+              <a
+                href={profile.contact.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="link-underline text-[0.95rem]"
+              >
+                LinkedIn
               </a>
               <a href={profile.contact.resumeHref} className="link-underline text-[0.95rem]">
                 {profile.contact.resumeLabel}

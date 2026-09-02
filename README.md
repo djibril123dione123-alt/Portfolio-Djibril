@@ -33,5 +33,6 @@ npm run build
 - `CONTENT_SOURCES.md` — every public claim mapped to the Master Profile status
 
 ## Before launch
-Confirm `meta.domain` in `src/content/profile.ts`, replace `public/cv-djibril-dione.pdf`
-with the 2026 résumé, and see `CONTENT_TODO.md`.
+Set `NEXT_PUBLIC_SITE_URL` to the confirmed domain (see `.env.example` / `src/lib/site.ts`;
+no canonical is emitted until it is set), replace `public/cv-djibril-dione.pdf` with the
+2026 résumé, and see `CONTENT_TODO.md`.

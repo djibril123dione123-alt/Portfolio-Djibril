@@ -27,7 +27,7 @@ export const projects: ProjectSummary[] = [
       "From a custom real-estate tool to a multi-organization property-management SaaS.",
     role: "Founder · Product Builder · Full-Stack Developer",
     period: "Dec 2025 – present",
-    status: "Two real rental agencies in field testing",
+    status: "2 real-estate agencies currently testing the product",
     discipline: ["Product discovery", "System design", "Full-stack build", "SaaS architecture"],
     stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Supabase", "PostgreSQL", "RLS", "Edge Functions"],
     links: [
@@ -77,8 +77,10 @@ export const projects: ProjectSummary[] = [
     stack: ["React", "TypeScript", "Tailwind CSS", "Supabase"],
     links: [{ label: "g5traders.lovable.app", href: "https://g5traders.lovable.app", kind: "live" }],
     cover: {
+      // Editorial visualisation, not a screenshot — see note in caseStudies/g5Traders.ts.
+      // Swap for /projects/g5-traders/dashboard.webp once the real capture is in the workspace.
       src: "/projects/g5-traders/treasury.svg",
-      alt: "G5 Traders treasury view — operational snapshot on 25 August 2026.",
+      alt: "Editorial data visualisation of the G5 Traders 25 August 2026 figures — not a screenshot of the app.",
       width: 1200,
       height: 750,
     },

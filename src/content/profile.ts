@@ -21,9 +21,14 @@ export const profile = {
   method: ["Observe", "Understand", "Structure", "Design", "Build", "Ship", "Learn"],
 
   about: [
-    "I study digital economics at Université Cheikh Anta Diop de Dakar — Institut des Politiques Publiques, on a track built around digital transformation of organizations. The degree is about how technology reshapes the way institutions and businesses work; my practice is the applied side of the same question.",
-    "Most of what I know about building software I taught myself, project by project, because a real problem needed solving. A one-month internship at the Mairie de Ouakam turned into a rental-management tool for a family agency, which turned into Samay Këur — a property-management SaaS now in field testing with two agencies.",
-    "I am not a senior engineer and I don't present myself as one. What the work shows is something more specific: the ability to take an unclear, real-world workflow and turn it into a product people actually use.",
+    "I study digital economics at Université Cheikh Anta Diop de Dakar — Institut des Politiques Publiques, on a track built around the digital transformation of organizations. The degree is about how technology reshapes the way institutions and businesses work; my practice is the applied side of the same question.",
+    "Most of what I know about building software I taught myself, project by project, because a real problem needed solving. A one-month internship at the Mairie de Ouakam turned into a rental-management tool for a family agency, which turned into Samay Këur — a property-management SaaS with 2 real-estate agencies currently testing it.",
+    "My edge is closing the distance between an unclear operational problem and a working product — from workflows and data through to interface and implementation, without a handoff along the way.",
+  ],
+
+  aboutShort: [
+    "I study digital economics at UCAD's Institut des Politiques Publiques, on a track about how technology reshapes the way organizations work. My practice is the applied side of that.",
+    "My edge is closing the distance between an unclear operational problem and a working product — workflows and data through to interface and implementation.",
   ],
 
   education: {
@@ -31,7 +36,10 @@ export const profile = {
     program: "Digital economics, technological development and digital business",
     track: "Documented option 2024–2025: Digital transformation of organizations",
     level: "Licence 2 — 2025–2026",
+    baccalaureate: "Scientific Baccalaureate (S2), pass with merit — Cours Anne Marie Javouhey",
   },
+
+  languages: ["French — working language", "English — Intermediate"],
 
   capabilities: {
     product: [
@@ -61,14 +69,16 @@ export const profile = {
   },
 
   contact: {
-    email: "djibril123dione123@gmail.com",
+    email: "dionedjibril33@gmail.com",
+    linkedin: "https://www.linkedin.com/in/djibril-dione-666450382/",
     resumeHref: "/cv-djibril-dione.pdf",
     resumeLabel: "Download résumé (PDF)",
   },
 
   meta: {
     siteName: "Djibril Dione",
-    domain: "https://djibrildione.com",
+    // Public domain is configured at build time via NEXT_PUBLIC_SITE_URL — see src/lib/site.ts.
+    // No confirmed production domain is owned yet (CONTENT_TODO.md).
     description:
       "Djibril Dione is a product builder and full-stack developer, founder of Samay Këur. He designs and builds digital products that turn fragmented real-world operations into clear, reliable systems.",
     locale: "en",

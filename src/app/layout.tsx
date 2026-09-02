@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import { profile } from "@/content/profile";
+import { SITE_URL, hasPublicDomain } from "@/lib/site";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import "./globals.css";
@@ -25,7 +26,8 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(profile.meta.domain),
+  // Neutral local origin until a real domain is set via NEXT_PUBLIC_SITE_URL (src/lib/site.ts).
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${profile.name} — ${profile.title}`,
     template: `%s — ${profile.name}`,
@@ -37,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: profile.meta.domain,
+    ...(hasPublicDomain ? { url: SITE_URL } : {}),
     siteName: profile.meta.siteName,
     title: `${profile.name} — ${profile.title}`,
     description: profile.meta.description,

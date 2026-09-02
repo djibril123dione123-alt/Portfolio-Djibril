@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
-import { profile } from "@/content/profile";
+import { SITE_URL } from "@/lib/site";
 import { projects } from "@/content/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = profile.meta.domain;
+  const base = SITE_URL;
   const now = new Date();
   return [
     { url: `${base}/`, lastModified: now, changeFrequency: "monthly", priority: 1 },

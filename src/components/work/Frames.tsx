@@ -13,7 +13,7 @@ export function WindowChrome({
   className?: string;
 }) {
   return (
-    <figure className={cn("overflow-hidden border border-line-strong bg-white shadow-[0_1px_0_rgba(0,0,0,0.04),0_24px_60px_-32px_rgba(0,0,0,0.28)]", className)}>
+    <figure className={cn("overflow-hidden panel", className)}>
       <div className="flex items-center gap-2 border-b border-line bg-paper-dim px-4 py-2.5">
         <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
         <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
@@ -64,10 +64,10 @@ export function CaseFigure({
           {img}
         </WindowChrome>
       ) : (
-        <div className="overflow-hidden border border-line-strong bg-white">{img}</div>
+        <div className="overflow-hidden panel">{img}</div>
       )}
       {fig.caption ? (
-        <figcaption className="mx-auto mt-3 max-w-2xl text-center font-mono text-[0.75rem] leading-relaxed text-ink-muted">
+        <figcaption className="annotation mx-auto mt-3 max-w-2xl text-center normal-case tracking-normal text-ink-muted">
           {fig.caption}
         </figcaption>
       ) : null}
@@ -77,8 +77,8 @@ export function CaseFigure({
 
 export function PhoneFrame({ fig }: { fig: Figure }) {
   return (
-    <div className="mx-auto w-full max-w-[220px] overflow-hidden rounded-[1.75rem] border-[6px] border-night bg-night p-0 shadow-[0_28px_60px_-30px_rgba(0,0,0,0.5)]">
-      <div className="overflow-hidden rounded-[1.25rem]">
+    <div className="mx-auto w-full max-w-[210px] overflow-hidden rounded-[1.6rem] border-[5px] border-night bg-night p-0 shadow-float">
+      <div className="overflow-hidden rounded-[1.15rem]">
         <SmartImage
           src={fig.src}
           alt={fig.alt}

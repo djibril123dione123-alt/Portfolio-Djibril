@@ -1,0 +1,284 @@
+import type { ReactNode } from "react";
+import { cn } from "@/lib/cn";
+import { SmartImage } from "@/components/ui/SmartImage";
+
+/* --------------------------------------------------------------------------
+ * Product-evidence primitives.
+ * A small vocabulary for staging real screenshots so no two shots look
+ * like the same component. No glass, no glossy shadow — subtle depth only.
+ * ----------------------------------------------------------------------- */
+
+type Shot = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+export function Screenshot({
+  src,
+  alt,
+  width,
+  height,
+  caption,
+  chrome,
+  chromeLabel,
+  flush,
+  priority,
+  sizes,
+  className,
+}: Shot & {
+  caption?: ReactNode;
+  chrome?: boolean;
+  chromeLabel?: string;
+  flush?: boolean;
+  priority?: boolean;
+  sizes?: string;
+  className?: string;
+}) {
+  return (
+    <figure className={cn("w-full", className)}>
+      <div className={cn("overflow-hidden", flush ? "panel-flush" : "panel")}>
+        {chrome ? (
+          <div className="flex items-center gap-1.5 border-b border-line bg-paper-dim px-3.5 py-2">
+            <span className="h-2 w-2 rounded-full bg-line-strong" />
+            <span className="h-2 w-2 rounded-full bg-line-strong" />
+            <span className="h-2 w-2 rounded-full bg-line-strong" />
+            {chromeLabel ? (
+              <span className="ml-2 truncate font-mono text-[0.66rem] text-ink-faint">
+                {chromeLabel}
+              </span>
+            ) : null}
+          </div>
+        ) : null}
+        <SmartImage
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          priority={priority}
+          sizes={sizes ?? "(max-width: 768px) 100vw, 70vw"}
+          className="block"
+        />
+      </div>
+      {caption ? (
+        <figcaption className="annotation mt-2.5 max-w-xl normal-case tracking-normal text-ink-muted">
+          {caption}
+        </figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
+type Note = {
+  /** position of the anchor dot, in % of the image box */
+  x: number;
+  y: number;
+  text: string;
+  /** which way the label flows from the dot */
+  side?: "left" | "right";
+};
+
+export function AnnotatedShot({
+  src,
+  alt,
+  width,
+  height,
+  notes = [],
+  caption,
+  chromeLabel,
+  priority,
+  sizes,
+  className,
+}: Shot & {
+  notes?: Note[];
+  caption?: ReactNode;
+  chromeLabel?: string;
+  priority?: boolean;
+  sizes?: string;
+  className?: string;
+}) {
+  return (
+    <figure className={cn("w-full", className)}>
+      <div className="relative">
+        <div className="overflow-hidden panel">
+          {chromeLabel ? (
+            <div className="flex items-center gap-1.5 border-b border-line bg-paper-dim px-3.5 py-2">
+              <span className="h-2 w-2 rounded-full bg-line-strong" />
+              <span className="h-2 w-2 rounded-full bg-line-strong" />
+              <span className="h-2 w-2 rounded-full bg-line-strong" />
+              <span className="ml-2 font-mono text-[0.66rem] text-ink-faint">{chromeLabel}</span>
+            </div>
+          ) : null}
+          <SmartImage
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            priority={priority}
+            sizes={sizes ?? "(max-width: 768px) 100vw, 70vw"}
+            className="block"
+          />
+        </div>
+
+        {/* Annotations: hidden on small screens where they'd overlap */}
+        <div className="pointer-events-none absolute inset-0 hidden lg:block">
+          {notes.map((n, i) => {
+            const left = n.side === "left";
+            return (
+              <div
+                key={i}
+                className="absolute flex items-center gap-2"
+                style={{
+                  left: `${n.x}%`,
+                  top: `${n.y}%`,
+                  transform: `translate(${left ? "-100%" : "0"}, -50%)`,
+                  flexDirection: left ? "row-reverse" : "row",
+                }}
+              >
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-clay ring-4 ring-clay/15" />
+                <span className="h-px w-6 bg-clay/50" />
+                <span className="whitespace-nowrap bg-ink px-2 py-1 font-mono text-[0.62rem] uppercase tracking-wide text-paper">
+                  {n.text}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* On mobile the same notes become a plain list */}
+      {notes.length ? (
+        <ul className="mt-3 space-y-1.5 lg:hidden">
+          {notes.map((n, i) => (
+            <li key={i} className="flex gap-2 annotation normal-case tracking-normal text-ink-muted">
+              <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-clay" />
+              {n.text}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+
+      {caption ? (
+        <figcaption className="annotation mt-2.5 max-w-xl normal-case tracking-normal text-ink-muted">
+          {caption}
+        </figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
+/** A zoomed detail window onto part of a screenshot. */
+export function CropWindow({
+  src,
+  alt,
+  focusX = 50,
+  focusY = 50,
+  zoom = 1.9,
+  ratio = "4 / 3",
+  label,
+  className,
+}: {
+  src: string;
+  alt: string;
+  focusX?: number;
+  focusY?: number;
+  zoom?: number;
+  ratio?: string;
+  label?: string;
+  className?: string;
+}) {
+  return (
+    <figure className={cn("w-full", className)}>
+      <div className="overflow-hidden panel" style={{ aspectRatio: ratio }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-cover"
+          style={{ objectPosition: `${focusX}% ${focusY}%`, transform: `scale(${zoom})` }}
+        />
+      </div>
+      {label ? (
+        <figcaption className="annotation mt-2 text-ink-muted">{label}</figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
+export function DevicePair({
+  desktop,
+  phone,
+  className,
+}: {
+  desktop: Shot & { chromeLabel?: string };
+  phone: Shot;
+  className?: string;
+}) {
+  return (
+    <div className={cn("relative", className)}>
+      <div className="overflow-hidden panel lg:mr-24">
+        {desktop.chromeLabel ? (
+          <div className="flex items-center gap-1.5 border-b border-line bg-paper-dim px-3.5 py-2">
+            <span className="h-2 w-2 rounded-full bg-line-strong" />
+            <span className="h-2 w-2 rounded-full bg-line-strong" />
+            <span className="h-2 w-2 rounded-full bg-line-strong" />
+            <span className="ml-2 font-mono text-[0.66rem] text-ink-faint">
+              {desktop.chromeLabel}
+            </span>
+          </div>
+        ) : null}
+        <SmartImage
+          src={desktop.src}
+          alt={desktop.alt}
+          width={desktop.width}
+          height={desktop.height}
+          sizes="(max-width: 1024px) 100vw, 62vw"
+          className="block"
+        />
+      </div>
+
+      <div className="mx-auto mt-5 w-[38%] min-w-[130px] max-w-[190px] lg:absolute lg:-bottom-8 lg:right-0 lg:mt-0 lg:w-[190px]">
+        <div className="overflow-hidden rounded-[1.4rem] border-[5px] border-night bg-night shadow-float">
+          <div className="overflow-hidden rounded-[1.05rem]">
+            <SmartImage
+              src={phone.src}
+              alt={phone.alt}
+              width={phone.width}
+              height={phone.height}
+              sizes="190px"
+              className="block"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function EvidenceRow({
+  items,
+  className,
+}: {
+  items: { src: string; alt: string; label: string; focusX?: number; focusY?: number; zoom?: number }[];
+  className?: string;
+}) {
+  return (
+    <div className={cn("grid gap-4 sm:grid-cols-2 lg:grid-cols-3", className)}>
+      {items.map((it, i) => (
+        <CropWindow
+          key={i}
+          src={it.src}
+          alt={it.alt}
+          label={it.label}
+          focusX={it.focusX}
+          focusY={it.focusY}
+          zoom={it.zoom ?? 1.6}
+          ratio="4 / 3"
+        />
+      ))}
+    </div>
+  );
+}
