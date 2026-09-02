@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Librairie Al Furqan — catalogue to WhatsApp checkout">
+  <rect width="1200" height="750" fill="#F6F3EC"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#B34327"/>
+
+  <text x="72" y="92" font-family="ui-monospace, monospace" font-size="19" letter-spacing="3" fill="#8C3119">LIBRAIRIE AL FURQAN</text>
+  <text x="72" y="150" font-family="Georgia, serif" font-size="44" fill="#181611">Catalogue → cart → WhatsApp</text>
+
+  <!-- book spines / catalogue grid -->
+  <g>
+    <rect x="72" y="210" width="150" height="360" fill="#EEEADF" stroke="#C9C0AC"/>
+    <rect x="238" y="210" width="150" height="360" fill="#EEEADF" stroke="#C9C0AC"/>
+    <rect x="404" y="210" width="150" height="360" fill="#EEEADF" stroke="#C9C0AC"/>
+    <g fill="#948C7B" font-family="ui-monospace, monospace" font-size="12">
+      <text x="88" y="596">BOOK</text><text x="254" y="596">BOOK</text><text x="420" y="596">BOOK</text>
+    </g>
+    <g stroke="#C9694E" stroke-width="3" fill="none">
+      <line x1="96" y1="250" x2="196" y2="250"/><line x1="96" y1="276" x2="176" y2="276"/>
+      <line x1="262" y1="250" x2="362" y2="250"/><line x1="262" y1="276" x2="342" y2="276"/>
+      <line x1="428" y1="250" x2="528" y2="250"/><line x1="428" y1="276" x2="508" y2="276"/>
+    </g>
+  </g>
+
+  <!-- arrow -->
+  <path d="M636 390 h96 m-18 -16 l18 16 l-18 16" fill="none" stroke="#181611" stroke-width="2"/>
+
+  <!-- whatsapp-style chat -->
+  <g>
+    <rect x="792" y="238" width="336" height="304" rx="10" fill="#FFFFFF" stroke="#C9C0AC"/>
+    <rect x="816" y="278" width="220" height="52" rx="10" fill="#F0E4DC"/>
+    <rect x="884" y="350" width="220" height="52" rx="10" fill="#EEEADF"/>
+    <rect x="816" y="422" width="180" height="52" rx="10" fill="#F0E4DC"/>
+    <text x="828" y="311" font-family="ui-monospace, monospace" font-size="13" fill="#6B6456">Order: 3 items</text>
+    <text x="896" y="383" font-family="ui-monospace, monospace" font-size="13" fill="#6B6456">Deliver to Ouakam?</text>
+    <text x="828" y="455" font-family="ui-monospace, monospace" font-size="13" fill="#6B6456">Confirmed ✓</text>
+  </g>
+
+  <line x1="72" y1="626" x2="1128" y2="626" stroke="#DDD6C6"/>
+  <text x="72" y="664" font-family="ui-monospace, monospace" font-size="14" fill="#6B6456">Mobile-first · ~25,240 Senegalese localities structured · La Poste network mapped</text>
+  <text x="72" y="694" font-family="ui-monospace, monospace" font-size="13" fill="#948C7B">Next.js · TypeScript · Tailwind · Supabase</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Nur Al-BinDjib — two paired users sharing state in realtime">
+  <rect width="1200" height="750" fill="#F6F3EC"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#B34327"/>
+
+  <text x="72" y="92" font-family="ui-monospace, monospace" font-size="19" letter-spacing="3" fill="#8C3119">NUR AL-BINDJIB</text>
+  <text x="72" y="150" font-family="Georgia, serif" font-size="44" fill="#181611">Two users · one shared space</text>
+
+  <!-- pairing diagram -->
+  <g stroke="#C9C0AC" stroke-width="1.5" fill="none">
+    <circle cx="300" cy="420" r="90"/>
+    <circle cx="900" cy="420" r="90"/>
+  </g>
+  <g font-family="ui-monospace, monospace" font-size="14" fill="#6B6456" text-anchor="middle">
+    <text x="300" y="425">USER A</text>
+    <text x="900" y="425">USER B</text>
+  </g>
+
+  <line x1="390" y1="420" x2="810" y2="420" stroke="#181611" stroke-width="2"/>
+  <rect x="520" y="392" width="160" height="56" rx="6" fill="#F0E4DC" stroke="#C9694E"/>
+  <text x="600" y="426" font-family="ui-monospace, monospace" font-size="13" fill="#8C3119" text-anchor="middle">INVITE CODE</text>
+
+  <!-- shared progress ring -->
+  <g transform="translate(600,240)">
+    <circle r="46" fill="none" stroke="#DDD6C6" stroke-width="10"/>
+    <circle r="46" fill="none" stroke="#B34327" stroke-width="10" stroke-linecap="round"
+      stroke-dasharray="205 289" transform="rotate(-90)"/>
+    <text y="6" font-family="ui-monospace, monospace" font-size="15" fill="#181611" text-anchor="middle">shared</text>
+  </g>
+
+  <g font-family="ui-monospace, monospace" font-size="14" fill="#181611">
+    <text x="150" y="576">tasks</text>
+    <text x="300" y="576">assigned work</text>
+    <text x="520" y="576">realtime progress</text>
+    <text x="780" y="576">web push</text>
+    <text x="940" y="576">deep-work timer</text>
+  </g>
+
+  <line x1="72" y1="626" x2="1128" y2="626" stroke="#DDD6C6"/>
+  <text x="72" y="664" font-family="ui-monospace, monospace" font-size="14" fill="#6B6456">Installable PWA · service worker · notifications when the app is closed</text>
+  <text x="72" y="694" font-family="ui-monospace, monospace" font-size="13" fill="#948C7B">React · Supabase · Row-Level Security · RPC · Edge Functions · Web Push</text>
+</svg>
