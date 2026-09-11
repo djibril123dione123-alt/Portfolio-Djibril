@@ -35,7 +35,7 @@ export const profile = {
     school: "Université Cheikh Anta Diop de Dakar — Institut des Politiques Publiques (IPP)",
     program: "Digital economics, technological development and digital business",
     track: "Documented option 2024–2025: Digital transformation of organizations",
-    level: "Licence 2 — 2025–2026",
+    level: "Licence 3 — 2024–present",
     baccalaureate: "Scientific Baccalaureate (S2), pass with merit — Cours Anne Marie Javouhey",
   },
 

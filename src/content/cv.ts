@@ -64,7 +64,7 @@ export const cv = {
     school: "Université Cheikh Anta Diop de Dakar — Institut des Politiques Publiques (IPP)",
     program: "Économie numérique, développement technologique et digital des affaires",
     track: "Option documentée 2024–2025 : Transformation digitale des organisations",
-    level: "Licence 2 — 2025–2026",
+    level: "Licence 3 — 2024 – aujourd'hui",
     baccalaureate: "Baccalauréat scientifique (S2), mention Assez Bien — Cours Anne Marie Javouhey",
   },
 
@@ -93,9 +93,8 @@ export const cv = {
     { label: "Anglais", level: "intermédiaire" },
   ],
 
-  // From the user's own final CV (2026-09-11) — not previously in the Master
-  // Profile / CONTENT_SOURCES.md. Included on the user's authority over their
-  // own document; flagged for their own final check in CONTENT_TODO.md.
+  // Confirmed directly by the user (2026-09-11): "j'ai mis à jour le profil
+  // aussi sur le cv" — supersedes the earlier unverified flag in CONTENT_TODO.md.
   complement: {
     role: "Répétiteur en mathématiques",
     org: "Cours du Soir Alal Ya Ndira",
