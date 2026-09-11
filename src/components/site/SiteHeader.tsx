@@ -37,12 +37,10 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [isCaseStudy]);
 
-  // Scroll-spy for the home hash sections.
+  // Scroll-spy for the home hash sections. Render already gates on `isHome`
+  // (see `active` below), so there's nothing to reset when navigating away.
   useEffect(() => {
-    if (!isHome) {
-      setActiveId(null);
-      return;
-    }
+    if (!isHome) return;
     const ids = ["work", "origin", "method", "about"];
     const els = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
     const obs = new IntersectionObserver(
@@ -58,6 +56,9 @@ export function SiteHeader() {
     return () => obs.disconnect();
   }, [isHome]);
 
+  // Close the mobile nav whenever the route actually changes underneath it —
+  // synchronizing with router navigation, not derived render state.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setOpen(false), [pathname]);
 
   return (

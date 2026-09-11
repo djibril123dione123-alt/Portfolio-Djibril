@@ -4,14 +4,15 @@ import { caseStudies, getCaseStudy } from "@/content/caseStudies";
 import { pageMeta } from "@/lib/seo";
 import { CaseStudyView } from "@/components/work/CaseStudyView";
 
-type Params = { params: { slug: string } };
+type Params = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
   return Object.keys(caseStudies).map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: Params): Metadata {
-  const study = getCaseStudy(params.slug);
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { slug } = await params;
+  const study = getCaseStudy(slug);
   if (!study) return {};
   return pageMeta({
     title: `${study.name} — Case study`,
@@ -21,8 +22,9 @@ export function generateMetadata({ params }: Params): Metadata {
   });
 }
 
-export default function WorkPage({ params }: Params) {
-  const study = getCaseStudy(params.slug);
+export default async function WorkPage({ params }: Params) {
+  const { slug } = await params;
+  const study = getCaseStudy(slug);
   if (!study) notFound();
   return <CaseStudyView study={study} />;
 }
