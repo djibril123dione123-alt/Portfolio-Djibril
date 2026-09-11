@@ -13,13 +13,13 @@ export function WindowChrome({
   className?: string;
 }) {
   return (
-    <figure className={cn("overflow-hidden panel", className)}>
-      <div className="flex items-center gap-2 border-b border-line bg-paper-dim px-4 py-2.5">
-        <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
-        <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
-        <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+    <figure className={cn("panel-shot", className)}>
+      <div className="chrome-bar">
+        <span className="chrome-dot" />
+        <span className="chrome-dot" />
+        <span className="chrome-dot" />
         {label ? (
-          <span className="ml-3 truncate font-mono text-[0.7rem] text-ink-faint">{label}</span>
+          <span className="ml-2 truncate font-mono text-[0.66rem] text-ink-muted">{label}</span>
         ) : null}
       </div>
       {children}
@@ -53,21 +53,23 @@ export function CaseFigure({
       height={fig.height}
       priority={priority}
       sizes={bleed === "inset" ? "(max-width: 768px) 100vw, 56rem" : "(max-width: 768px) 100vw, 78rem"}
-      className="block"
+      className="block w-full"
     />
   );
 
   return (
     <figure className={widthClass}>
       {frame === "window" ? (
-        <WindowChrome label={fig.src.includes("mairie") ? "Microsoft Access" : "app.samaykeur.com"}>
+        <WindowChrome
+          label={fig.src.includes("mairie") ? "Microsoft Access" : "app.samaykeur.com"}
+        >
           {img}
         </WindowChrome>
       ) : (
-        <div className="overflow-hidden panel">{img}</div>
+        <div className="panel-shot">{img}</div>
       )}
       {fig.caption ? (
-        <figcaption className="annotation mx-auto mt-3 max-w-2xl text-center normal-case tracking-normal text-ink-muted">
+        <figcaption className="annotation mx-auto mt-3.5 max-w-2xl text-center text-ink-muted">
           {fig.caption}
         </figcaption>
       ) : null}
@@ -77,17 +79,15 @@ export function CaseFigure({
 
 export function PhoneFrame({ fig }: { fig: Figure }) {
   return (
-    <div className="mx-auto w-full max-w-[210px] overflow-hidden rounded-[1.6rem] border-[5px] border-night bg-night p-0 shadow-float">
-      <div className="overflow-hidden rounded-[1.15rem]">
-        <SmartImage
-          src={fig.src}
-          alt={fig.alt}
-          width={fig.width}
-          height={fig.height}
-          sizes="220px"
-          className="block"
-        />
-      </div>
+    <div className="device-phone mx-auto w-full max-w-[200px]">
+      <SmartImage
+        src={fig.src}
+        alt={fig.alt}
+        width={fig.width}
+        height={fig.height}
+        sizes="200px"
+        className="block"
+      />
     </div>
   );
 }

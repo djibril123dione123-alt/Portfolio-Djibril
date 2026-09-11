@@ -23,6 +23,7 @@ export function SmartImage({ src, alt, width, height, className, sizes, priority
         height={height}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
+        style={{ aspectRatio: `${width} / ${height}` }}
         className={cn("h-auto w-full", className)}
       />
     );

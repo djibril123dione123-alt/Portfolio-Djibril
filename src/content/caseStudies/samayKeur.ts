@@ -12,7 +12,7 @@ export const samayKeur: CaseStudy = {
   summary:
     "Samay Këur is a property-management platform for rental agencies in Senegal. It began as a bespoke tool for one family agency, Confort Immo, and became a generalised, multi-tenant product once it was clear the same operational problem existed everywhere. This is the story of how it was discovered, understood, generalised and built.",
   role: "Founder · Product Builder · Full-Stack Developer",
-  period: "December 2025 – present",
+  period: "≈ late 2025 – present",
   status: "2 real-estate agencies currently testing the product",
   stack: [
     "React",
@@ -39,7 +39,7 @@ export const samayKeur: CaseStudy = {
   },
   facts: [
     { k: "Role", v: "Founder · Product Builder · Full-Stack Developer" },
-    { k: "Timeline", v: "Started Dec 2025 · major build phase completed mid-Aug 2026" },
+    { k: "Timeline", v: "Started ≈ late 2025 · major build phase completed mid-Aug 2026" },
     { k: "Current state", v: "Field testing + early go-to-market" },
     { k: "Validation", v: "2 real-estate agencies currently testing the product" },
     { k: "Predecessor", v: "Confort Immo Archi — 8 users, still in use" },

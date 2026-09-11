@@ -26,7 +26,7 @@ export const projects: ProjectSummary[] = [
     positioning:
       "From a custom real-estate tool to a multi-organization property-management SaaS.",
     role: "Founder · Product Builder · Full-Stack Developer",
-    period: "Dec 2025 – present",
+    period: "≈ late 2025 – present",
     status: "2 real-estate agencies currently testing the product",
     discipline: ["Product discovery", "System design", "Full-stack build", "SaaS architecture"],
     stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Supabase", "PostgreSQL", "RLS", "Edge Functions"],

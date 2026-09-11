@@ -1,4 +1,5 @@
-import { Reveal } from "@/components/ui/Reveal";
+import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
+import { AccentRule } from "@/components/ui/primitives";
 
 const STEPS = [
   {
@@ -35,48 +36,55 @@ const STEPS = [
 
 export function HowIBuild() {
   return (
-    <section id="method" className="scroll-mt-16 border-b border-line bg-paper-cool py-section">
+    <section id="method" className="scroll-mt-24 border-b border-line bg-paper-cool py-section">
       <div className="container-wide">
-        <div className="grid gap-x-14 gap-y-10 md:grid-cols-[15rem_1fr]">
+        <div className="grid gap-x-16 gap-y-10 md:grid-cols-[16rem_1fr]">
           <Reveal>
-            <p className="kicker">How I build</p>
-            <h2 className="mt-4 text-display-md font-semibold tracking-tight text-balance">
-              The same sequence, in a municipality or a startup.
-            </h2>
-            <p className="mt-4 max-w-xs text-[0.95rem] leading-relaxed text-ink-muted">
-              Not a framework for a slide. It is what the projects have in common once the stack is
-              stripped away — and each step is proven by one of them.
-            </p>
+            <div className="md:sticky md:top-24">
+              <div className="flex items-center gap-4">
+                <AccentRule />
+                <p className="font-mono text-label uppercase tracking-[0.14em] text-clay-deep">
+                  How I build
+                </p>
+              </div>
+              <h2 className="mt-5 text-display-md text-balance">
+                The same sequence, in a municipality or a startup.
+              </h2>
+              <p className="mt-4 max-w-xs text-[0.95rem] leading-relaxed text-ink-muted">
+                Not a framework for a slide. It is what the projects have in common once the stack is
+                stripped away — and each step is proven by one of them.
+              </p>
+            </div>
           </Reveal>
 
-          <Reveal delay={0.05}>
-            <ol className="border-l border-line-strong">
-              {STEPS.map((s, i) => (
-                <li key={s.k} className="relative grid grid-cols-[2.5rem_1fr] gap-x-4 pb-9 pl-6 last:pb-0">
-                  <span className="absolute -left-[6.5px] top-1 h-3 w-3 rounded-full border-2 border-clay bg-paper-cool" />
-                  <span className="font-mono text-[0.8rem] text-clay-deep">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h3 className="font-mono text-[0.82rem] uppercase tracking-[0.16em] text-ink">
-                      {s.k}
-                    </h3>
-                    <p className="mt-2 max-w-xl text-[0.98rem] leading-relaxed text-ink-soft">{s.d}</p>
-                    <div className="mt-2.5 flex flex-wrap gap-x-3 gap-y-1">
-                      {s.seen.map((p) => (
-                        <span
-                          key={p}
-                          className="font-mono text-[0.64rem] uppercase tracking-wide text-ink-faint"
-                        >
-                          ↳ {p}
-                        </span>
-                      ))}
-                    </div>
+          <Stagger as="ol" className="border-l border-line-strong" step={0.05}>
+            {STEPS.map((s, i) => (
+              <StaggerItem
+                as="li"
+                key={s.k}
+                className="relative grid grid-cols-[3rem_1fr] gap-x-4 pb-10 pl-7 last:pb-0"
+              >
+                <span className="absolute -left-[7px] top-1 h-3.5 w-3.5 rounded-full border-2 border-clay bg-paper-cool" />
+                <span className="tabular-nums font-mono text-[0.8rem] text-clay-deep">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 className="text-[1.1rem] font-semibold tracking-tight text-ink">{s.k}</h3>
+                  <p className="mt-1.5 max-w-xl text-[0.98rem] leading-relaxed text-ink-soft">{s.d}</p>
+                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+                    {s.seen.map((p) => (
+                      <span
+                        key={p}
+                        className="font-mono text-[0.66rem] uppercase tracking-wide text-clay-deep"
+                      >
+                        ↳ {p}
+                      </span>
+                    ))}
                   </div>
-                </li>
-              ))}
-            </ol>
-          </Reveal>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
         </div>
       </div>
     </section>

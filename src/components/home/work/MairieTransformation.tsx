@@ -1,6 +1,16 @@
-import { Reveal } from "@/components/ui/Reveal";
+import { Reveal, RevealMedia } from "@/components/ui/Reveal";
 import { Screenshot, CropWindow } from "@/components/product/Product";
 import { WorkEyebrow, MetaRow, WorkCta } from "./shared";
+
+function Arrow() {
+  return (
+    <li className="hidden items-center justify-center md:flex" aria-hidden>
+      <svg width="34" height="12" viewBox="0 0 34 12" fill="none" className="text-line-strong">
+        <path d="M0 6h30m0 0-5-5m5 5-5 5" stroke="currentColor" strokeWidth="1.5" />
+      </svg>
+    </li>
+  );
+}
 
 export function MairieTransformation() {
   return (
@@ -14,58 +24,60 @@ export function MairieTransformation() {
             tagline="Turning a paper-based administrative workflow into a digital system — diagnosed, built, deployed and handed over in one month."
             accent="text-mairie"
           />
-          <MetaRow items={["Digital Transformation Intern", "3 Oct – 3 Nov 2025", "Direction des Services Techniques"]} />
+          <MetaRow
+            items={[
+              "Digital Transformation Intern",
+              "3 Oct – 3 Nov 2025",
+              "Direction des Services Techniques",
+            ]}
+          />
         </Reveal>
 
-        <Reveal delay={0.05}>
-          <ol className="mt-12 grid items-stretch gap-4 md:grid-cols-[1fr_auto_1fr_auto_1fr]">
-            {/* 1 — manual */}
+        <RevealMedia className="mt-11" delay={0.05}>
+          <ol className="grid items-stretch gap-4 md:grid-cols-[1fr_auto_1fr_auto_1fr]">
             <li className="flex flex-col">
-              <span className="annotation text-mairie">01 · Before</span>
-              <div className="mt-2 flex flex-1 flex-col justify-between border border-line-strong bg-paper-deep p-5">
-                <p
-                  className="h-24 w-full opacity-60"
-                  style={{
-                    backgroundImage:
-                      "repeating-linear-gradient(180deg, transparent 0 15px, rgba(24,22,17,0.18) 15px 16px)",
-                  }}
-                  aria-hidden
-                />
-                <p className="mt-4 text-[0.9rem] leading-snug text-ink-soft">
-                  Paper registers, physical routing between offices. Lookups took minutes; traceability was weak.
+              <span className="annotation mb-2 uppercase tracking-[0.14em] text-mairie">01 · Before</span>
+              <div className="flex flex-1 flex-col justify-between rounded-md border border-line-strong bg-paper-deep p-5">
+                <p className="font-mono text-[0.72rem] uppercase leading-relaxed tracking-[0.08em] text-ink-muted">
+                  Paper registers
+                  <br />
+                  Physical routing
+                  <br />
+                  Minutes per lookup
+                </p>
+                <p className="mt-6 text-[0.9rem] leading-snug text-ink-soft">
+                  Slow to search, weak traceability, no statistics.
                 </p>
               </div>
             </li>
 
-            <li className="hidden items-center justify-center text-ink-faint md:flex" aria-hidden>→</li>
+            <Arrow />
 
-            {/* 2 — structured db */}
             <li className="flex flex-col">
-              <span className="annotation text-mairie">02 · Built</span>
-              <div className="mt-2 flex-1">
+              <span className="annotation mb-2 uppercase tracking-[0.14em] text-mairie">02 · Built</span>
+              <div className="flex-1">
                 <CropWindow
                   src="/projects/mairie-ouakam/menu-principal.webp"
                   alt="Access solution main menu: add a letter, consult letters."
                   focusX={50}
-                  focusY={40}
+                  focusY={38}
                   zoom={1.35}
                   ratio="4 / 3"
-                  label="A structured Access database — one screen, the fields the office uses"
+                  label="A structured Access database — the fields the office uses"
                 />
               </div>
             </li>
 
-            <li className="hidden items-center justify-center text-ink-faint md:flex" aria-hidden>→</li>
+            <Arrow />
 
-            {/* 3 — search */}
             <li className="flex flex-col">
-              <span className="annotation text-mairie">03 · In use</span>
-              <div className="mt-2 flex-1">
+              <span className="annotation mb-2 uppercase tracking-[0.14em] text-mairie">03 · In use</span>
+              <div className="flex-1">
                 <CropWindow
                   src="/projects/mairie-ouakam/recherche.webp"
                   alt="Access multi-criteria search form: date range, recipient, status, discharge number."
-                  focusX={30}
-                  focusY={35}
+                  focusX={28}
+                  focusY={32}
                   zoom={1.15}
                   ratio="4 / 3"
                   label="Multi-criteria search replaces manual registry lookup"
@@ -73,7 +85,7 @@ export function MairieTransformation() {
               </div>
             </li>
           </ol>
-        </Reveal>
+        </RevealMedia>
 
         <Reveal delay={0.05}>
           <div className="mt-8 grid gap-8 lg:grid-cols-[1.7fr_1fr] lg:items-center">
@@ -84,7 +96,7 @@ export function MairieTransformation() {
               height={887}
               chrome
               chromeLabel="Microsoft Access — Courriers DST"
-              sizes="(max-width: 1024px) 100vw, 56vw"
+              sizes="(max-width: 1024px) 100vw, 54vw"
               caption="The register, searchable. Sender and subject columns are irreversibly pixelated — real municipal correspondence, not mine to publish."
             />
             <p className="max-w-sm text-[0.98rem] leading-relaxed text-ink-soft">

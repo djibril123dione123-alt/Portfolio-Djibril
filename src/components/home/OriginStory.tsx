@@ -9,7 +9,7 @@ type Beat = {
   when: string;
   title: string;
   body: string;
-  visual: "mairie" | "confort-1" | "confort-2" | "insight" | "samay";
+  visual: "mairie" | "confort" | "insight" | "samay";
   rupture?: boolean;
 };
 
@@ -21,16 +21,10 @@ const BEATS: Beat[] = [
     visual: "mairie",
   },
   {
-    when: "≈ two weeks in",
-    title: "A tool for a family agency",
-    body: "Mouhamed Fall, the internship supervisor, sees the work and asks Djibril to build a rental-management application for the agency run by Madame Fall.",
-    visual: "confort-1",
-  },
-  {
-    when: "Late 2025",
+    when: "≈ late 2025",
     title: "Confort Immo Archi",
-    body: "A complete rental-management application, built solo in about a month — owners, buildings, units, tenants, contracts, payments, arrears, commissions, reports, PDF documents. Eight users. Still in use in August 2026.",
-    visual: "confort-2",
+    body: "Mouhamed Fall, the internship supervisor, asks Djibril to build a rental-management application for the agency run by Madame Fall. Built solo in about a month — owners, buildings, units, tenants, contracts, payments, arrears, commissions, reports, PDF documents. Eight users. Still in use in August 2026.",
+    visual: "confort",
   },
   {
     when: "The turn",
@@ -40,30 +34,27 @@ const BEATS: Beat[] = [
     rupture: true,
   },
   {
-    when: "Late 2025 / early 2026 →",
+    when: "≈ late 2025 / early 2026 →",
     title: "Samay Këur",
     body: "The specific solution becomes a platform: multi-organization architecture, deeper financial workflows, a real document system, a more mature UX and a commercial layer. Generalisation and productisation — not a prettier rewrite.",
     visual: "samay",
   },
 ];
 
-const VISUALS: Record<Beat["visual"], { src: string; alt: string; label: string } | null> = {
+const VISUALS: Record<
+  Exclude<Beat["visual"], "insight">,
+  { src: string; alt: string; label: string }
+> = {
   mairie: {
     src: "/projects/mairie-ouakam/menu-principal.webp",
     alt: "The Access solution built at the Mairie de Ouakam.",
     label: "Mairie de Ouakam · Access",
   },
-  "confort-1": {
+  confort: {
     src: "/projects/confort-immo/dashboard.webp",
     alt: "Confort Immo Archi dashboard — the first agency tool.",
     label: "Confort Immo Archi · dashboard",
   },
-  "confort-2": {
-    src: "/projects/confort-immo/reporting-bailleurs.webp",
-    alt: "Confort Immo Archi per-owner financial reporting.",
-    label: "Confort Immo Archi · owner reporting",
-  },
-  insight: null,
   samay: {
     src: "/projects/samay-keur/dashboard.webp",
     alt: "Samay Këur agency dashboard.",
@@ -73,18 +64,30 @@ const VISUALS: Record<Beat["visual"], { src: string; alt: string; label: string 
 
 function InsightVisual() {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-6 p-8 text-center">
-      <div className="border border-night-line px-5 py-3 font-mono text-[0.72rem] uppercase tracking-[0.14em] text-paper/70">
-        Single agency
+    <div className="flex h-full w-full flex-col items-center justify-center gap-7 p-8">
+      <div className="rounded-md border border-night-line bg-night-soft px-6 py-4 text-center font-mono text-[0.7rem] uppercase tracking-[0.14em] text-paper/75">
+        One agency
+        <span className="mt-1 block text-[0.6rem] text-night-faint">bespoke tool</span>
       </div>
-      <div className="font-mono text-2xl text-clay-soft">↓</div>
-      <div className="relative">
-        <div className="absolute -left-2 -top-2 h-full w-full border border-night-line" />
-        <div className="absolute -left-1 -top-1 h-full w-full border border-night-line" />
-        <div className="relative border border-clay-soft bg-night-soft px-6 py-3 font-mono text-[0.72rem] uppercase tracking-[0.14em] text-clay-soft">
-          Multi-organization
-        </div>
+      <div className="flex flex-col items-center gap-1 text-clay-soft">
+        <span className="font-mono text-lg">↓</span>
+        <span className="font-mono text-[0.58rem] uppercase tracking-[0.16em] text-night-faint">
+          keep the domain, vary the surface
+        </span>
       </div>
+      <div className="grid w-full max-w-[260px] grid-cols-3 gap-2">
+        {["Agency A", "Agency B", "Agency C"].map((a) => (
+          <div
+            key={a}
+            className="rounded-[6px] border border-clay-soft/60 bg-night-soft px-2 py-3 text-center font-mono text-[0.56rem] uppercase tracking-wide text-clay-soft"
+          >
+            {a}
+          </div>
+        ))}
+      </div>
+      <p className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-paper/60">
+        one multi-organization platform
+      </p>
     </div>
   );
 }
@@ -110,10 +113,16 @@ export function OriginStory() {
   }, []);
 
   return (
-    <section id="origin" className="grain scroll-mt-16 bg-night py-section-lg text-paper">
-      <div className="container-wide">
-        <p className="kicker text-clay-soft">Origin</p>
-        <h2 className="font-display mt-4 max-w-4xl text-display-lg text-balance">
+    <section
+      id="origin"
+      className="grain relative scroll-mt-24 overflow-hidden bg-night py-section-lg text-paper"
+    >
+      <div className="container-wide relative">
+        <div className="flex items-center gap-4">
+          <span aria-hidden className="accent-rule" />
+          <p className="font-mono text-label uppercase tracking-[0.14em] text-clay-soft">Origin</p>
+        </div>
+        <h2 className="mt-5 max-w-4xl text-display-lg text-balance">
           Mairie <span className="text-clay-soft">→</span> Confort Immo{" "}
           <span className="text-clay-soft">→</span> Samay Këur
         </h2>
@@ -123,10 +132,9 @@ export function OriginStory() {
         </p>
 
         <div className="mt-14 lg:grid lg:grid-cols-[1fr_1.05fr] lg:gap-16">
-          {/* Beats */}
           <ol className="lg:col-start-1">
             {BEATS.map((b, i) => {
-              const v = VISUALS[b.visual];
+              const v = b.visual === "insight" ? null : VISUALS[b.visual];
               return (
                 <li
                   key={i}
@@ -135,18 +143,15 @@ export function OriginStory() {
                     refs.current[i] = el;
                   }}
                   className={cn(
-                    "border-t border-night-line py-8 lg:min-h-[64vh] lg:py-16",
-                    b.rupture && "lg:min-h-[72vh]",
+                    "border-t border-night-line py-8 lg:py-14",
+                    b.rupture ? "lg:min-h-[58vh]" : "lg:min-h-[52vh]",
                   )}
                 >
                   <div
-                    className={cn(
-                      "transition-opacity duration-500",
-                      "lg:data-[dim=true]:opacity-40",
-                    )}
+                    className="transition-opacity duration-500 lg:data-[dim=true]:opacity-35"
                     data-dim={active !== i}
                   >
-                    <span className="font-mono text-[0.72rem] uppercase tracking-[0.12em] text-clay-soft">
+                    <span className="font-mono text-label uppercase tracking-[0.12em] text-clay-soft">
                       {b.when}
                     </span>
                     <h3
@@ -154,7 +159,7 @@ export function OriginStory() {
                         "mt-3 text-balance",
                         b.rupture
                           ? "font-display text-display-md text-paper"
-                          : "text-[1.5rem] font-semibold tracking-tight text-paper",
+                          : "text-display-sm font-semibold text-paper",
                       )}
                     >
                       {b.rupture ? `“${b.title}”` : b.title}
@@ -162,20 +167,26 @@ export function OriginStory() {
                     <p
                       className={cn(
                         "mt-3 max-w-lg leading-relaxed text-paper/70",
-                        b.rupture ? "text-[1.02rem]" : "text-[0.98rem]",
+                        b.rupture ? "text-[1.02rem]" : "text-[0.96rem]",
                       )}
                     >
                       {b.body}
                     </p>
 
-                    {/* inline visual — mobile only */}
                     <div className="mt-5 lg:hidden">
                       {v ? (
-                        <div className="overflow-hidden border border-night-line">
-                          <SmartImage src={v.src} alt={v.alt} width={1887} height={861} sizes="100vw" className="block" />
+                        <div className="overflow-hidden rounded-md border border-night-line">
+                          <SmartImage
+                            src={v.src}
+                            alt={v.alt}
+                            width={1887}
+                            height={861}
+                            sizes="100vw"
+                            className="block"
+                          />
                         </div>
                       ) : (
-                        <div className="h-56 border border-night-line bg-night-soft">
+                        <div className="h-72 rounded-md border border-night-line bg-night-soft">
                           <InsightVisual />
                         </div>
                       )}
@@ -186,23 +197,22 @@ export function OriginStory() {
             })}
           </ol>
 
-          {/* Sticky visual — desktop only */}
           <div className="hidden lg:col-start-2 lg:row-start-1 lg:block">
-            <div className="sticky top-[12vh] h-[76vh]">
-              <div className="relative h-full w-full overflow-hidden border border-night-line bg-night-soft">
+            <div className="sticky top-[14vh] h-[72vh]">
+              <div className="relative h-full w-full overflow-hidden rounded-md border border-night-line bg-night-soft">
                 {BEATS.map((b, i) => {
-                  const v = VISUALS[b.visual];
+                  const v = b.visual === "insight" ? null : VISUALS[b.visual];
                   return (
                     <div
                       key={i}
                       className={cn(
-                        "absolute inset-0 flex items-center justify-center p-6 transition-opacity duration-700",
+                        "absolute inset-0 flex items-center justify-center p-7 transition-opacity duration-700",
                         active === i ? "opacity-100" : "opacity-0",
                       )}
                     >
                       {v ? (
                         <figure className="w-full">
-                          <div className="overflow-hidden border border-night-line shadow-float">
+                          <div className="overflow-hidden rounded-md border border-night-line shadow-float">
                             <SmartImage
                               src={v.src}
                               alt={v.alt}
@@ -212,7 +222,7 @@ export function OriginStory() {
                               className="block"
                             />
                           </div>
-                          <figcaption className="mt-3 font-mono text-[0.66rem] uppercase tracking-wide text-night-faint">
+                          <figcaption className="mt-3 font-mono text-[0.64rem] uppercase tracking-wide text-night-faint">
                             {v.label}
                           </figcaption>
                         </figure>

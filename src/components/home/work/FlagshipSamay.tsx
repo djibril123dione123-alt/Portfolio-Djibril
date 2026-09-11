@@ -1,15 +1,20 @@
-import { Reveal } from "@/components/ui/Reveal";
-import { AnnotatedShot, Screenshot } from "@/components/product/Product";
+import { Reveal, RevealMedia } from "@/components/ui/Reveal";
+import { Screenshot, DevicePhone } from "@/components/product/Product";
+import { SmartImage } from "@/components/ui/SmartImage";
 import { WorkEyebrow, MetaRow, WorkCta } from "./shared";
 
 const D = { w: 1887, h: 861 };
 
+const READS = [
+  "Rent collected, arrears to recover, agency commission and the net owed back to each owner — one screen, kept correct in real time.",
+  "Partial payments carry a remaining balance forward instead of disappearing.",
+  "Every generated document is filed, versioned and QR-verifiable.",
+];
+
 export function FlagshipSamay() {
   return (
-    <section className="relative border-b border-line bg-paper pb-[clamp(2.5rem,5vw,4rem)] pt-[clamp(3.5rem,7vw,6rem)]">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[58%] bg-samay-wash/50" />
-
-      <div className="container-wide relative">
+    <section className="relative border-b border-line bg-paper pb-[clamp(3rem,5vw,4.5rem)] pt-[clamp(2.5rem,4vw,3.5rem)]">
+      <div className="container-wide">
         <Reveal>
           <WorkEyebrow
             index="01"
@@ -18,42 +23,54 @@ export function FlagshipSamay() {
             tagline="From a custom real-estate tool to a multi-organization property-management SaaS — the system a rental agency actually runs on."
           />
           <MetaRow
-            items={[
-              "Founder · Product Builder · Full-Stack Developer",
-              "Late 2025 → present",
-              "2 real-estate agencies in field testing",
-            ]}
+            items={["Founder · Product Builder · Full-Stack Developer", "≈ late 2025 → present"]}
+            status="2 real-estate agencies in field testing"
           />
         </Reveal>
 
-        <Reveal delay={0.05}>
-          <div className="mt-9">
-            <AnnotatedShot
-              src="/projects/samay-keur/dashboard.webp"
-              alt="Samay Këur agency dashboard: rent collection volume, arrears to recover, owner net, agency commission and portfolio occupancy."
-              width={D.w}
-              height={D.h}
-              chromeLabel="app.samaykeur.com — agency dashboard"
-              sizes="(max-width: 1024px) 100vw, 84vw"
-              notes={[
-                { x: 22, y: 20, side: "right", text: "Arrears surfaced as work" },
-                { x: 46, y: 20, side: "right", text: "Owner net after management fees" },
-                { x: 13, y: 92, side: "right", text: "Per-agency roles & access" },
-              ]}
-              caption="One agency's operating picture — collection volume, arrears, owner net, commission and occupancy, kept correct in real time."
-            />
+        {/* the flagship shot on a real tinted ground */}
+        <RevealMedia className="mt-10" delay={0.05}>
+          <div className="rounded-lg border border-samay-line bg-samay-wash p-4 sm:p-7 lg:p-10">
+            <figure>
+              <div className="panel-shot">
+                <div className="chrome-bar">
+                  <span className="chrome-dot" />
+                  <span className="chrome-dot" />
+                  <span className="chrome-dot" />
+                  <span className="ml-2 font-mono text-[0.64rem] text-ink-muted">
+                    app.samaykeur.com — agency dashboard
+                  </span>
+                </div>
+                <SmartImage
+                  src="/projects/samay-keur/dashboard.webp"
+                  alt="Samay Këur agency dashboard: rent collection volume, arrears to recover, owner net, agency commission and portfolio occupancy."
+                  width={D.w}
+                  height={D.h}
+                  sizes="(max-width: 1024px) 92vw, 74vw"
+                  className="block"
+                />
+              </div>
+              <figcaption className="mt-5 grid gap-2 sm:grid-cols-3">
+                {READS.map((r) => (
+                  <span key={r} className="flex gap-2.5 annotation text-ink-muted">
+                    <span aria-hidden className="mt-1 h-1 w-1 shrink-0 rounded-full bg-samay" />
+                    {r}
+                  </span>
+                ))}
+              </figcaption>
+            </figure>
           </div>
-        </Reveal>
+        </RevealMedia>
 
+        {/* supporting evidence — consistent frames */}
         <Reveal delay={0.05}>
-          <div className="mt-7 grid items-start gap-6 lg:grid-cols-[1fr_1fr_0.5fr]">
+          <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1fr_auto] lg:items-start">
             <Screenshot
               src="/projects/samay-keur/paiement-partiel.webp"
               alt="Samay Këur partial-payment detail: expected rent, amount collected, remaining balance, agency commission, net to owner."
               width={D.w}
               height={D.h}
-              flush
-              sizes="(max-width: 1024px) 100vw, 38vw"
+              sizes="(max-width: 1024px) 100vw, 36vw"
               caption="A partial payment, fully accounted: collected, remaining balance, commission, net owner."
             />
             <Screenshot
@@ -61,27 +78,18 @@ export function FlagshipSamay() {
               alt="Samay Këur document vault listing generated contracts, receipts, mandates and reports with QR verification."
               width={D.w}
               height={D.h}
-              flush
-              sizes="(max-width: 1024px) 100vw, 38vw"
-              caption="A document subsystem — templates, generation, a versioned registry, QR-verifiable PDFs."
+              sizes="(max-width: 1024px) 100vw, 36vw"
+              caption="The document subsystem — templates, generation, a versioned registry, QR-verifiable PDFs."
             />
-            <div className="mx-auto w-[42%] min-w-[120px] max-w-[150px] lg:w-full lg:max-w-none">
-              <div className="overflow-hidden rounded-[1.2rem] border-[4px] border-night bg-night shadow-float">
-                <div className="overflow-hidden rounded-[0.9rem]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/projects/samay-keur/mobile-dashboard.webp"
-                    alt="Samay Këur mobile dashboard."
-                    loading="lazy"
-                    decoding="async"
-                    className="block w-full"
-                  />
-                </div>
-              </div>
-              <p className="annotation mt-2 text-center normal-case tracking-normal text-ink-muted">
-                Built for the phone, not just resized
-              </p>
-            </div>
+            <DevicePhone
+              src="/projects/samay-keur/mobile-dashboard.webp"
+              alt="Samay Këur mobile dashboard."
+              width={900}
+              height={1950}
+              sizes="(max-width: 1024px) 40vw, 168px"
+              caption="Built for the phone, not just resized"
+              className="mx-auto w-[44%] min-w-[128px] max-w-[168px] lg:w-[168px]"
+            />
           </div>
         </Reveal>
 

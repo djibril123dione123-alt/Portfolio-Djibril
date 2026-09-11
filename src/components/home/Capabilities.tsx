@@ -1,4 +1,5 @@
-import { Reveal } from "@/components/ui/Reveal";
+import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
+import { AccentRule } from "@/components/ui/primitives";
 
 const PILLARS = [
   {
@@ -9,7 +10,7 @@ const PILLARS = [
   },
   {
     key: "Engineering",
-    line: "Building the system end-to-end.",
+    line: "Building the system end to end.",
     items: ["React / Next.js", "Supabase / PostgreSQL", "Auth · RLS · Edge Functions", "Multi-user & PWA"],
     seen: ["Samay Këur", "Nur Al-BinDjib", "Al Furqan"],
   },
@@ -26,8 +27,13 @@ export function Capabilities() {
     <section className="border-b border-line bg-paper py-section">
       <div className="container-wide">
         <Reveal>
-          <p className="kicker">Capabilities</p>
-          <h2 className="mt-4 max-w-2xl text-display-md font-semibold tracking-tight text-balance">
+          <div className="flex items-center gap-4">
+            <AccentRule />
+            <p className="font-mono text-label uppercase tracking-[0.14em] text-clay-deep">
+              Capabilities
+            </p>
+          </div>
+          <h2 className="mt-5 max-w-2xl text-display-md text-balance">
             Three things, kept in the same head.
           </h2>
           <p className="mt-4 max-w-lg text-[1rem] leading-relaxed text-ink-soft text-pretty">
@@ -36,30 +42,29 @@ export function Capabilities() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-px border border-line-strong bg-line-strong md:grid-cols-3">
-          {PILLARS.map((p, i) => (
-            <Reveal key={p.key} delay={i * 0.06}>
-              <div className="flex h-full flex-col bg-paper p-6 lg:p-8">
-                <h3 className="font-mono text-[0.78rem] uppercase tracking-[0.16em] text-clay-deep">
-                  {p.key}
-                </h3>
-                <p className="mt-4 max-w-xs text-[1.05rem] font-medium leading-snug text-ink text-balance">
-                  {p.line}
-                </p>
-                <ul className="mt-5 space-y-2">
-                  {p.items.map((it) => (
-                    <li key={it} className="text-[0.92rem] leading-relaxed text-ink-soft">
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-6 border-t border-line pt-3 font-mono text-[0.66rem] uppercase tracking-wide text-ink-faint">
-                  Seen in&nbsp; {p.seen.join(" · ")}
-                </p>
-              </div>
-            </Reveal>
+        <Stagger className="mt-12 grid gap-5 md:grid-cols-3" step={0.06}>
+          {PILLARS.map((p) => (
+            <StaggerItem key={p.key} className="flex h-full flex-col rounded-lg border border-line-strong bg-paper-pure p-7 lg:p-8">
+              <h3 className="font-mono text-[0.78rem] uppercase tracking-[0.16em] text-clay-deep">
+                {p.key}
+              </h3>
+              <p className="mt-4 max-w-[15rem] text-[1.15rem] font-semibold leading-snug text-ink text-balance">
+                {p.line}
+              </p>
+              <ul className="mt-6 space-y-2.5 border-t border-line pt-5">
+                {p.items.map((it) => (
+                  <li key={it} className="flex items-baseline gap-2.5 text-[0.92rem] leading-relaxed text-ink-soft">
+                    <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-line-strong" />
+                    {it}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-auto pt-6 font-mono text-[0.66rem] uppercase tracking-wide text-ink-muted">
+                Seen in&nbsp;&nbsp;{p.seen.join(" · ")}
+              </p>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

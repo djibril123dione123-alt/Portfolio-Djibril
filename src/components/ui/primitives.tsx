@@ -15,34 +15,27 @@ export function Kicker({ children, className }: { children: ReactNode; className
   return <p className={cn("kicker", className)}>{children}</p>;
 }
 
-export function SectionHeading({
-  kicker,
-  title,
-  intro,
-  id,
-  className,
-}: {
-  kicker: string;
-  title: ReactNode;
-  intro?: ReactNode;
-  id?: string;
-  className?: string;
-}) {
-  return (
-    <header id={id} className={cn("max-w-wide", className)}>
-      <Kicker>{kicker}</Kicker>
-      <h2 className="mt-5 text-display-md text-balance max-w-3xl">{title}</h2>
-      {intro ? (
-        <p className="mt-5 max-w-prose text-body-lg text-ink-soft text-pretty">{intro}</p>
-      ) : null}
-    </header>
-  );
+export function AccentRule({ className }: { className?: string }) {
+  return <span aria-hidden className={cn("accent-rule block", className)} />;
 }
 
-export function Tag({ children }: { children: ReactNode }) {
+/** Chapter opener: accent rule + mono kicker + optional index. */
+export function ChapterMark({
+  index,
+  label,
+  className,
+  tone = "text-clay-deep",
+}: {
+  index?: string;
+  label: string;
+  className?: string;
+  tone?: string;
+}) {
   return (
-    <span className="inline-flex items-center border border-line-strong px-2.5 py-1 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-ink-muted">
-      {children}
-    </span>
+    <div className={cn("flex items-center gap-3 font-mono text-label uppercase tracking-[0.14em]", tone, className)}>
+      {index ? <span className="tabular-nums">{index}</span> : null}
+      <span aria-hidden className="h-px w-8 bg-current opacity-60" />
+      <span>{label}</span>
+    </div>
   );
 }

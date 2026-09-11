@@ -24,7 +24,10 @@ export function SiteFooter() {
             {profile.title} · {profile.secondary}
           </p>
           <div className="mt-5 flex flex-col gap-1.5 text-[0.9rem]">
-            <a href={`mailto:${profile.contact.email}`} className="link-underline text-ink-soft hover:text-ink">
+            <a
+              href={`mailto:${profile.contact.email}`}
+              className="link-underline text-ink-soft hover:text-ink"
+            >
               {profile.contact.email}
             </a>
             <a
@@ -42,7 +45,7 @@ export function SiteFooter() {
         </div>
 
         <nav aria-label="Work" className="text-sm">
-          <p className="kicker kicker-plain">Work</p>
+          <p className="kicker kicker-plain text-ink-muted">Work</p>
           <ul className="mt-4 space-y-2">
             {projects.map((p) => (
               <li key={p.slug}>
@@ -55,7 +58,7 @@ export function SiteFooter() {
         </nav>
 
         <nav aria-label="Sections" className="text-sm">
-          <p className="kicker kicker-plain">Navigate</p>
+          <p className="kicker kicker-plain text-ink-muted">Navigate</p>
           <ul className="mt-4 space-y-2">
             {SECTIONS.map((s) => (
               <li key={s.href}>
@@ -79,9 +82,11 @@ export function SiteFooter() {
       </div>
 
       <div className="container-wide flex flex-col gap-1.5 border-t border-line py-5 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
-        <p>© {year} {profile.name}</p>
+        <p>
+          © {year} {profile.name}
+        </p>
         <p>Dakar, Senegal</p>
-        <p>Built from scratch — Next.js · TypeScript · Tailwind</p>
+        <p className="font-mono uppercase tracking-wide">Designed &amp; built in-house</p>
       </div>
     </footer>
   );

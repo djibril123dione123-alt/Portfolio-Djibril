@@ -2,16 +2,14 @@ import Link from "next/link";
 import type { CaseBlock, CaseStudy } from "@/content/caseStudies/types";
 import { getProject, projects } from "@/content/projects";
 import { Container, Kicker } from "@/components/ui/primitives";
-import { Reveal } from "@/components/ui/Reveal";
+import { Reveal, RevealMedia } from "@/components/ui/Reveal";
 import { CaseFigure, PhoneFrame } from "@/components/work/Frames";
 import { rich } from "@/components/work/richText";
 
 function Prose({ block }: { block: Extract<CaseBlock, { kind: "prose" }> }) {
   return (
-    <div className="grid gap-x-12 gap-y-5 md:grid-cols-[14rem_1fr]">
-      <div>
-        {block.kicker ? <Kicker>{block.kicker}</Kicker> : null}
-      </div>
+    <div className="grid gap-x-12 gap-y-4 md:grid-cols-[13rem_1fr]">
+      <div>{block.kicker ? <Kicker>{block.kicker}</Kicker> : null}</div>
       <div className="max-w-prose">
         {block.heading ? (
           <h2 className="text-title font-semibold tracking-tight text-balance">{block.heading}</h2>
@@ -28,11 +26,13 @@ function Prose({ block }: { block: Extract<CaseBlock, { kind: "prose" }> }) {
 
 function Steps({ block }: { block: Extract<CaseBlock, { kind: "steps" }> }) {
   return (
-    <div className="grid gap-x-12 gap-y-8 md:grid-cols-[14rem_1fr]">
+    <div className="grid gap-x-12 gap-y-8 md:grid-cols-[13rem_1fr]">
       <div>
         {block.kicker ? <Kicker>{block.kicker}</Kicker> : null}
         {block.heading ? (
-          <h2 className="mt-4 text-title font-semibold tracking-tight text-balance">{block.heading}</h2>
+          <h2 className="mt-4 text-title font-semibold tracking-tight text-balance">
+            {block.heading}
+          </h2>
         ) : null}
         {block.intro ? (
           <p className="mt-4 max-w-xs text-[0.95rem] leading-relaxed text-ink-muted">{block.intro}</p>
@@ -41,7 +41,7 @@ function Steps({ block }: { block: Extract<CaseBlock, { kind: "steps" }> }) {
       <ol className="border-t border-line">
         {block.steps.map((s, i) => (
           <li key={i} className="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-line py-5">
-            <span className="font-mono text-[0.8rem] text-clay-deep">
+            <span className="tabular-nums font-mono text-[0.8rem] text-clay-deep">
               {String(i + 1).padStart(2, "0")}
             </span>
             <div>
@@ -63,22 +63,24 @@ function Split({ block }: { block: Extract<CaseBlock, { kind: "split" }> }) {
       <div className="max-w-wide">
         {block.kicker ? <Kicker>{block.kicker}</Kicker> : null}
         {block.heading ? (
-          <h2 className="mt-4 max-w-2xl text-display-md font-semibold tracking-tight text-balance">{block.heading}</h2>
+          <h2 className="mt-4 max-w-2xl text-display-md font-semibold tracking-tight text-balance">
+            {block.heading}
+          </h2>
         ) : null}
         {block.intro ? (
-          <p className="mt-4 max-w-prose text-body-lg text-ink-soft text-pretty">{block.intro}</p>
+          <p className="mt-4 max-w-prose text-lede text-ink-soft text-pretty">{block.intro}</p>
         ) : null}
       </div>
-      <div className="mt-10 grid gap-px overflow-hidden border border-line-strong bg-line-strong md:grid-cols-2">
+      <div className="mt-10 grid gap-px overflow-hidden rounded-md border border-line-strong bg-line-strong md:grid-cols-2">
         {[block.left, block.right].map((col, idx) => (
-          <div key={idx} className="bg-paper p-7">
+          <div key={idx} className="bg-paper-pure p-7">
             <h3 className="font-mono text-[0.78rem] uppercase tracking-[0.14em] text-clay-deep">
               {col.title}
             </h3>
             <ul className="mt-5 space-y-3">
               {col.points.map((pt, i) => (
                 <li key={i} className="flex gap-3 text-[0.98rem] leading-relaxed text-ink-soft">
-                  <span aria-hidden className="mt-2 h-1 w-1 shrink-0 bg-clay" />
+                  <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-clay" />
                   {pt}
                 </li>
               ))}
@@ -93,13 +95,15 @@ function Split({ block }: { block: Extract<CaseBlock, { kind: "split" }> }) {
 function Metrics({ block }: { block: Extract<CaseBlock, { kind: "metrics" }> }) {
   return (
     <div>
-      <div className="grid grid-cols-2 gap-px border border-line-strong bg-line-strong md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-px overflow-hidden rounded-md border border-line-strong bg-line-strong md:grid-cols-4">
         {block.items.map((m, i) => (
-          <div key={i} className="bg-paper p-5">
-            <div className="text-[1.5rem] font-semibold tracking-tight leading-tight text-ink">{m.value}</div>
+          <div key={i} className="bg-paper-pure p-5">
+            <div className="tnum text-[1.5rem] font-semibold leading-tight tracking-tight text-ink">
+              {m.value}
+            </div>
             <div className="mt-1 text-[0.85rem] text-ink-soft">{m.label}</div>
             {m.sub ? (
-              <div className="mt-0.5 font-mono text-[0.68rem] uppercase tracking-wide text-ink-faint">
+              <div className="mt-0.5 font-mono text-[0.68rem] uppercase tracking-wide text-ink-muted">
                 {m.sub}
               </div>
             ) : null}
@@ -118,7 +122,7 @@ function Metrics({ block }: { block: Extract<CaseBlock, { kind: "metrics" }> }) 
 function Statement({ block }: { block: Extract<CaseBlock, { kind: "statement" }> }) {
   return (
     <figure className="mx-auto max-w-4xl border-y border-ink py-12 text-center">
-      <blockquote className="font-display text-display-md italic text-balance">
+      <blockquote className="font-display text-display-md italic text-balance hang">
         &ldquo;{block.text}&rdquo;
       </blockquote>
       {block.attribution ? (
@@ -133,15 +137,11 @@ function Statement({ block }: { block: Extract<CaseBlock, { kind: "statement" }>
 function Gallery({ block }: { block: Extract<CaseBlock, { kind: "gallery" }> }) {
   const cols = block.columns ?? 2;
   return (
-    <div
-      className={
-        cols === 3
-          ? "grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          : "grid gap-6 sm:grid-cols-2"
-      }
-    >
+    <div className={cols === 3 ? "grid gap-6 sm:grid-cols-2 lg:grid-cols-3" : "grid gap-6 sm:grid-cols-2"}>
       {block.items.map((fig, i) => (
-        <CaseFigure key={i} fig={fig} frame="plain" bleed="full" />
+        <RevealMedia key={i} delay={(i % 3) * 0.05}>
+          <CaseFigure fig={fig} frame="plain" bleed="full" />
+        </RevealMedia>
       ))}
     </div>
   );
@@ -153,10 +153,12 @@ function Devices({ block }: { block: Extract<CaseBlock, { kind: "devices" }> }) 
       <div className="max-w-wide">
         {block.kicker ? <Kicker>{block.kicker}</Kicker> : null}
         {block.heading ? (
-          <h2 className="mt-4 max-w-2xl text-display-md font-semibold tracking-tight text-balance">{block.heading}</h2>
+          <h2 className="mt-4 max-w-2xl text-display-md font-semibold tracking-tight text-balance">
+            {block.heading}
+          </h2>
         ) : null}
         {block.intro ? (
-          <p className="mt-4 max-w-prose text-body-lg text-ink-soft text-pretty">{block.intro}</p>
+          <p className="mt-4 max-w-prose text-lede text-ink-soft text-pretty">{block.intro}</p>
         ) : null}
       </div>
       <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
@@ -209,13 +211,7 @@ function Block({ block }: { block: CaseBlock }) {
       case "keyvalue":
         return <KeyValue block={block} />;
       case "figure":
-        return (
-          <CaseFigure
-            fig={block}
-            frame={block.frame ?? "plain"}
-            bleed={block.bleed ?? "inset"}
-          />
-        );
+        return <CaseFigure fig={block} frame={block.frame ?? "plain"} bleed={block.bleed ?? "inset"} />;
       default:
         return null;
     }
@@ -224,7 +220,7 @@ function Block({ block }: { block: CaseBlock }) {
   const wide = block.kind === "figure" && (block.bleed === "full" || block.bleed === "wide");
 
   return (
-    <Reveal as="section" className={wide ? "" : "container-wide"} delay={0}>
+    <Reveal as="section" className={wide ? "" : "container-wide"}>
       {wide ? <div className="container-wide">{inner}</div> : inner}
     </Reveal>
   );
@@ -234,37 +230,47 @@ export function CaseStudyView({ study }: { study: CaseStudy }) {
   const project = getProject(study.slug);
 
   return (
-    <article className="py-section">
+    <article className="pb-[clamp(3.5rem,7vw,6rem)] pt-[clamp(1.75rem,3.5vw,2.75rem)]">
       {/* Header */}
       <Container>
         <Reveal>
           <Link
             href="/#work"
-            className="link-underline font-mono text-[0.75rem] uppercase tracking-[0.14em] text-ink-muted"
+            className="link-underline font-mono text-[0.72rem] uppercase tracking-[0.14em] text-ink-muted"
           >
             ← Selected work
           </Link>
-          <p className="kicker mt-8">{project?.kicker ?? "Case study"}</p>
-          <h1 className="mt-5 max-w-4xl text-display-lg font-semibold tracking-tight text-balance">{study.name}</h1>
-          <p className="mt-6 max-w-2xl text-body-lg text-ink-soft text-pretty">{study.tagline}</p>
+          <div className="mt-9 flex items-center gap-4">
+            <span aria-hidden className="accent-rule" />
+            <p className="font-mono text-label uppercase tracking-[0.14em] text-clay-deep">
+              {project?.kicker ?? "Case study"}
+            </p>
+          </div>
+          <h1 className="mt-5 max-w-4xl text-display-lg font-semibold tracking-tight text-balance">
+            {study.name}
+          </h1>
+          <p className="mt-6 max-w-2xl text-lede text-ink-soft text-pretty">{study.tagline}</p>
         </Reveal>
 
         <Reveal delay={0.05}>
-          <div className="mt-12 grid gap-x-10 gap-y-6 border-t border-line pt-8 md:grid-cols-[1fr_1fr_1fr]">
-            {study.facts.map((f) => (
-              <div key={f.k}>
-                <dt className="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-ink-muted">
+          <dl className="mt-12 grid grid-cols-1 border-t border-line pt-8 sm:grid-cols-2 md:grid-cols-3">
+            {study.facts.map((f, i) => (
+              <div
+                key={f.k}
+                className={`py-3 md:py-0 md:pl-6 md:pr-6 ${i % 3 !== 0 ? "md:border-l md:border-line" : ""}`}
+              >
+                <dt className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-ink-muted">
                   {f.k}
                 </dt>
-                <dd className="mt-1.5 text-[0.95rem] leading-relaxed text-ink">{f.v}</dd>
+                <dd className="tnum mt-1.5 text-[0.95rem] leading-relaxed text-ink">{f.v}</dd>
               </div>
             ))}
-          </div>
-          <div className="mt-8 flex flex-wrap gap-2">
+          </dl>
+          <div className="mt-8 flex flex-wrap gap-1.5">
             {study.stack.map((s) => (
               <span
                 key={s}
-                className="border border-line-strong px-2.5 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-ink-muted"
+                className="rounded-[5px] border border-line-strong bg-paper-pure px-2.5 py-1 font-mono text-[0.66rem] uppercase tracking-[0.08em] text-ink-muted"
               >
                 {s}
               </span>
@@ -289,22 +295,22 @@ export function CaseStudyView({ study }: { study: CaseStudy }) {
       </Container>
 
       {/* Hero image */}
-      <div className="container-wide mt-14">
-        <Reveal>
+      <div className="container-wide mt-12">
+        <RevealMedia>
           <CaseFigure fig={study.hero} frame="plain" bleed="wide" priority />
-        </Reveal>
+        </RevealMedia>
       </div>
 
       {/* Summary */}
       <Container>
         <Reveal>
-          <p className="mx-auto mt-14 max-w-3xl font-display text-[1.2rem] leading-relaxed text-ink text-pretty md:text-[1.4rem]">
+          <p className="mx-auto mt-14 max-w-3xl font-display text-[1.2rem] leading-relaxed text-ink text-pretty hang md:text-[1.42rem]">
             {study.summary}
           </p>
         </Reveal>
       </Container>
 
-      {/* Body blocks */}
+      {/* Body */}
       <div className="mt-16 space-y-16 md:mt-20 md:space-y-20">
         {study.blocks.map((block, i) => (
           <Block key={i} block={block} />
@@ -319,7 +325,7 @@ export function CaseStudyView({ study }: { study: CaseStudy }) {
             <ul className="mt-8 grid gap-x-12 gap-y-7 md:grid-cols-2">
               {study.learned.map((l, i) => (
                 <li key={i} className="flex gap-4">
-                  <span className="font-mono text-[0.8rem] text-clay-deep">
+                  <span className="tabular-nums font-mono text-[0.8rem] text-clay-deep">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <p className="max-w-prose text-[1rem] leading-relaxed text-ink-soft">{rich(l)}</p>
@@ -331,7 +337,7 @@ export function CaseStudyView({ study }: { study: CaseStudy }) {
 
         {study.disclaimers?.length ? (
           <div className="mt-14 max-w-3xl border-l-2 border-line-strong pl-5">
-            <p className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-ink-faint">
+            <p className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-ink-muted">
               Notes on evidence
             </p>
             <ul className="mt-3 space-y-2">

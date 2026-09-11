@@ -15,16 +15,17 @@
   body {
     background-color: theme("colors.paper.DEFAULT");
     color: theme("colors.ink.DEFAULT");
-    /* Sans is the primary voice. Serif (Fraunces) is used deliberately via .font-display. */
+    /* Sans is the primary voice. Serif (Fraunces) is opt-in via .font-display. */
     font-family: theme("fontFamily.sans");
-    font-feature-settings: "kern", "liga", "calt";
+    font-feature-settings: "kern", "liga", "calt", "cv05", "ss01";
+    font-synthesis: none;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
   ::selection {
     background-color: theme("colors.clay.DEFAULT");
-    color: theme("colors.paper.DEFAULT");
+    color: theme("colors.paper.pure");
   }
 
   h1, h2, h3, h4, h5 {
@@ -34,15 +35,13 @@
     text-wrap: balance;
   }
 
-  /* Opt back into the serif voice explicitly. */
-  .font-display,
-  .font-display h1,
-  .font-display h2,
-  .font-display h3 {
+  /* Fraunces — the contrast voice. Hero statement, one pull-quote per study, the turn, the close. */
+  .font-display {
     font-family: theme("fontFamily.display");
     font-weight: 400;
     font-optical-sizing: auto;
-    letter-spacing: -0.018em;
+    font-variation-settings: "opsz" 96, "SOFT" 0, "WONK" 0;
+    letter-spacing: -0.02em;
   }
 
   a {
@@ -53,7 +52,7 @@
   :focus-visible {
     outline: 2px solid theme("colors.clay.DEFAULT");
     outline-offset: 3px;
-    border-radius: 2px;
+    border-radius: 3px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -66,6 +65,16 @@
       scroll-behavior: auto !important;
     }
   }
+
+  /* Scroll-reveal content must never be trapped hidden without JS, or in print. */
+  @media (scripting: none), print {
+    [style*="opacity:0"],
+    [style*="opacity: 0"] {
+      opacity: 1 !important;
+      transform: none !important;
+      clip-path: none !important;
+    }
+  }
 }
 
 @layer components {
@@ -76,70 +85,72 @@
     padding-inline: clamp(1.25rem, 4.5vw, 3.5rem);
   }
 
-  .container-text {
+  .container-reading {
     width: 100%;
     max-width: 46rem;
     margin-inline: auto;
     padding-inline: clamp(1.25rem, 4.5vw, 3.5rem);
   }
 
-  /* Mono eyebrow. Colour is inherited so it works on light + dark. */
+  /* Mono eyebrow. Colour inherits so it works on light + dark + accent grounds. */
   .kicker {
     font-family: theme("fontFamily.mono");
-    font-size: theme("fontSize.kicker");
+    font-size: theme("fontSize.label");
     font-weight: 500;
     text-transform: uppercase;
     color: theme("colors.clay.deep");
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.65rem;
   }
 
   .kicker::before {
     content: "";
     width: 1.6rem;
-    height: 1px;
+    height: 2px;
     background-color: currentColor;
-    opacity: 0.65;
     display: inline-block;
+    flex: none;
   }
 
   .kicker-plain::before {
     display: none;
   }
 
-  .rule {
-    height: 1px;
-    width: 100%;
-    background-color: theme("colors.line.DEFAULT");
+  /* 2px accent bar — the recurring signature. */
+  .accent-rule {
+    width: 2.5rem;
+    height: 2px;
+    background-color: theme("colors.clay.DEFAULT");
   }
 
   .link-underline {
     background-image: linear-gradient(theme("colors.clay.DEFAULT"), theme("colors.clay.DEFAULT"));
-    background-size: 0% 1px;
+    background-size: 0% 1.5px;
     background-position: 0 100%;
     background-repeat: no-repeat;
     transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    padding-bottom: 1px;
+    padding-bottom: 2px;
   }
 
-  .link-underline:hover {
-    background-size: 100% 1px;
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1.5px;
   }
 
-  /* Body copy. Sans, comfortable measure. */
+  /* Body copy — sans, comfortable measure. */
   .prose-editorial {
-    max-width: 42rem;
+    max-width: 40rem;
   }
 
   .prose-editorial p {
     font-size: 1.0625rem;
-    line-height: 1.7;
+    line-height: 1.72;
     color: theme("colors.ink.soft");
   }
 
   .prose-editorial p + p {
-    margin-top: 1.1rem;
+    margin-top: 1.15rem;
   }
 
   .prose-editorial strong {
@@ -147,27 +158,76 @@
     font-weight: 600;
   }
 
-  /* Product-evidence surfaces: subtle depth, no glass, no glossy shadow. */
+  /* ---- Surface system: three tiers, one shadow language, one radius ---- */
+
+  /* Tier 1 — raised card / block. */
   .panel {
-    background-color: #fff;
+    background-color: theme("colors.paper.pure");
     border: 1px solid theme("colors.line.strong");
-    box-shadow:
-      0 1px 0 rgba(24, 22, 17, 0.03),
-      0 18px 40px -28px rgba(24, 22, 17, 0.28);
+    border-radius: theme("borderRadius.md");
+    box-shadow: theme("boxShadow.card");
   }
 
-  .panel-flush {
-    background-color: #fff;
+  /* Tier 2 — a framed product screenshot. Longer, calibrated shadow + inner light ring. */
+  .panel-shot {
+    background-color: theme("colors.paper.pure");
     border: 1px solid theme("colors.line.strong");
+    border-radius: theme("borderRadius.md");
+    box-shadow: theme("boxShadow.screenshot");
+    overflow: hidden;
+  }
+
+  /* Flat bordered block — no elevation. */
+  .panel-flat {
+    background-color: theme("colors.paper.pure");
+    border: 1px solid theme("colors.line.strong");
+    border-radius: theme("borderRadius.md");
+    overflow: hidden;
+  }
+
+  /* Fake browser chrome bar. */
+  .chrome-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 1px solid theme("colors.line.DEFAULT");
+    background-color: theme("colors.paper.dim");
+    padding: 0.55rem 0.9rem;
+  }
+
+  .chrome-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background-color: theme("colors.line.strong");
+    flex: none;
+  }
+
+  /* Phone device frame. */
+  .device-phone {
+    border: 5px solid theme("colors.night.DEFAULT");
+    border-radius: theme("borderRadius.device");
+    background-color: theme("colors.night.DEFAULT");
+    box-shadow: theme("boxShadow.float");
+    overflow: hidden;
+  }
+
+  .device-phone > * {
+    border-radius: 1.55rem;
+    overflow: hidden;
+    display: block;
   }
 
   .annotation {
     font-family: theme("fontFamily.mono");
-    font-size: 0.7rem;
-    line-height: 1.35;
+    font-size: 0.72rem;
+    line-height: 1.4;
     letter-spacing: 0.01em;
-    text-transform: uppercase;
     color: theme("colors.ink.muted");
+  }
+
+  .tnum {
+    font-variant-numeric: tabular-nums;
   }
 }
 
@@ -178,16 +238,25 @@
   .text-pretty {
     text-wrap: pretty;
   }
-  .grain {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  .hang {
+    hanging-punctuation: first last;
   }
-  /* Vertical rhythm helpers */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+  }
+  /* Vertical rhythm */
   .py-section {
-    padding-top: clamp(3.5rem, 7vw, 6rem);
-    padding-bottom: clamp(3.5rem, 7vw, 6rem);
+    padding-top: clamp(3.25rem, 6.5vw, 5.5rem);
+    padding-bottom: clamp(3.25rem, 6.5vw, 5.5rem);
   }
   .py-section-lg {
-    padding-top: clamp(4.5rem, 9vw, 7.5rem);
-    padding-bottom: clamp(4.5rem, 9vw, 7.5rem);
+    padding-top: clamp(4rem, 8vw, 7rem);
+    padding-bottom: clamp(4rem, 8vw, 7rem);
   }
 }

@@ -19,7 +19,10 @@ export default function AboutPage() {
     <div className="py-section">
       <Container>
         <Reveal>
-          <Kicker>About</Kicker>
+          <div className="flex items-center gap-4">
+            <span aria-hidden className="accent-rule" />
+            <p className="font-mono text-label uppercase tracking-[0.14em] text-clay-deep">About</p>
+          </div>
           <h1 className="mt-6 max-w-4xl text-display-lg font-display text-balance">
             {profile.name}
           </h1>
@@ -28,13 +31,13 @@ export default function AboutPage() {
 
         <div className="mt-14 grid gap-x-14 gap-y-12 md:grid-cols-[1fr_1.5fr]">
           <Reveal>
-            <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden border border-line-strong bg-paper-dim grayscale">
+            <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-md border border-line-strong bg-paper-deep grayscale">
               <Image
                 src="/djibril-dione.jpg"
                 alt="Djibril Dione at his desk."
                 fill
                 sizes="(max-width: 768px) 80vw, 24rem"
-                className="object-cover"
+                className="object-cover object-[50%_22%]"
               />
             </div>
           </Reveal>
@@ -84,10 +87,10 @@ export default function AboutPage() {
                   key={m}
                   className="flex items-baseline gap-4 border-b border-line py-3 last:border-0"
                 >
-                  <span className="font-mono text-[0.75rem] text-ink-faint">
+                  <span className="tabular-nums font-mono text-[0.75rem] text-ink-muted">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-display text-[1.15rem]">{m}</span>
+                  <span className="text-[1.05rem] font-medium tracking-tight text-ink">{m}</span>
                 </li>
               ))}
             </ol>
