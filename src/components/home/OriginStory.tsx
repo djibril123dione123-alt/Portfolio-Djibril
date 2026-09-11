@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { SmartImage } from "@/components/ui/SmartImage";
 import { cn } from "@/lib/cn";
 
@@ -177,6 +178,15 @@ export function OriginStory() {
                         b.title
                       )}
                     </h3>
+                    {b.visual === "confort" ? (
+                      <Image
+                        src="/projects/confort-immo/logo.webp"
+                        alt="Confort Immo Archi — the real company brand."
+                        width={640}
+                        height={441}
+                        className="mt-3 h-9 w-auto opacity-95"
+                      />
+                    ) : null}
                     <p
                       className={cn(
                         "mt-4 max-w-lg leading-relaxed text-paper/70",
