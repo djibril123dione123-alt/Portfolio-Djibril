@@ -45,16 +45,14 @@ export function G5Operation() {
                 Several people, one shared reality: stock, sales, cash, transfers and each partner&rsquo;s
                 position. Without one system it drifts — so I built one.
               </p>
-              <div className="mt-6 flex flex-wrap gap-2">
+              <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 border-t border-commerce/20 pt-4">
                 {MODULES.map((m) => (
-                  <span
-                    key={m}
-                    className="rounded-md border border-commerce/25 bg-paper-pure px-2.5 py-1.5 font-mono text-[0.68rem] uppercase tracking-wide text-ink"
-                  >
+                  <li key={m} className="flex items-baseline gap-2 text-[0.9rem] text-ink">
+                    <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-commerce" />
                     {m}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
             {/* right — operational snapshot */}
@@ -73,9 +71,7 @@ export function G5Operation() {
                 {SNAPSHOT.map(([v, l]) => (
                   <div key={l} className="bg-paper-pure p-3.5">
                     <div className="tnum text-[1.1rem] font-semibold tracking-tight text-ink">{v}</div>
-                    <div className="mt-0.5 font-mono text-[0.62rem] uppercase tracking-wide text-ink-muted">
-                      {l}
-                    </div>
+                    <div className="mt-0.5 text-[0.76rem] text-ink-muted">{l}</div>
                   </div>
                 ))}
               </div>

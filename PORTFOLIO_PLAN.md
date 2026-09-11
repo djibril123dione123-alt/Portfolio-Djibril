@@ -82,3 +82,55 @@ Originals were never modified or moved. Processing scripts in `scratchpad/`.
 - Copy: removed defensive "not tutorial projects" / "I am not a senior engineer" → positive
   framing. Samay date → "Late 2025 / early 2026". Al Furqan / Nur SVGs redrawn as confident
   system diagrams (still clearly diagrams, swap-ready for real captures).
+
+---
+
+## Final pass — premium polish + CV deliverable (structure unchanged)
+
+- **Palette**: `ink` cooled to a blue-graphite (`#1C2027` family), `night` (Origin's dark
+  section) shifted from warm near-black to an institutional blue-black, `clay` accent muted
+  to a copper (`#A2472A` family) — no literal printed-black surface anywhere, no reused
+  Samay Këur commercial colours. Verified against WCAG contrast manually before committing hex
+  values. `tailwind.config.ts`.
+- **Typography discipline**: removed the bordered mono-chip pattern site-wide (`MetaRow`, work
+  cards, G5 modules, capability lists) in favour of calm sentence-case lines; bumped every
+  informational label under 0.7rem; de-serif'd a couple of nested headings that had picked up
+  the display font by cascade instead of intent.
+- **Hero**: simplified from an animated 3-card proof grid to a static, plainly divided row with
+  Samay Këur visually emphasized as the lead proof — deliberately removed scroll-reveal motion
+  from all above-the-fold content (`Hero.tsx`) after judging it a real above-the-fold risk, not
+  a stylistic nice-to-have.
+- **Origin Story rupture**: the "what if this wasn't specific to one agency" beat now reads in
+  French — « Et si ce problème ne concernait pas une seule agence ? » — the one deliberate
+  code-switch on an English-language site, sized and spaced as a real visual rupture, not a
+  sentence among others. Beats condensed 5 → 4.
+- **New `/cv` route**: a real, French, print-composed 2-page CV sharing the site's design
+  tokens and project accent colours — Repères stat strip, colour-coded experience entries,
+  a functional print button, a QR block. Lives outside the marketing chrome via a new `(site)`
+  route group (`src/app/(site)/layout.tsx`) so `/cv` renders bare while every other route keeps
+  header/footer.
+- **QR code**: `src/components/ui/PortfolioQr.tsx` generates a real, server-rendered SVG QR
+  (via the `qrcode` package, `errorCorrectionLevel: "H"`) with the circular "D." brand mark
+  composited in the centre, gated entirely behind `NEXT_PUBLIC_SITE_URL` being set — renders
+  nothing until a real public domain is configured, never points at an invented one.
+  Independently verified to still decode correctly with the logo overlay present.
+  Domain (`djibrildione.com`) confirmed by decoding the user's own printed QR code first.
+- **Brand mark**: refined from a rounded square to a circle ("D" + copper dot), matching the
+  user-provided logo direction — favicon, apple-touch-icon, manifest icons and the QR's centre
+  mark all regenerated from it.
+- **CV PDF**: `public/cv-djibril-dione.pdf` is the user's own final, separately-designed
+  document (`CV_Djibril_Dione_2026.pdf`), not a render of `/cv` — the two share core facts but
+  are deliberately not pixel-identical (see CONTENT_SOURCES.md / CONTENT_TODO.md).
+- **Contact facts**: email settled on `dionedjibril33@gmail.com` (a draft mockup briefly used a
+  `djibrildione.com`-domain address; the user's own final CV superseded it), phone
+  `+221 76 579 79 12` shown only on `/cv`, LinkedIn unchanged.
+- **Bug fix**: homepage `<title>` was duplicating ("… — Djibril Dione — Djibril Dione") because
+  the root layout's title template re-applied itself to an already-full page title — fixed with
+  an `absoluteTitle` escape hatch in `pageMeta()` (`src/lib/seo.ts`).
+- **Open items deliberately left to the user**: a "Licence 3, 2024–aujourd'hui" claim in the
+  user's final CV conflicts with the confirmed "Licence 2, 2025–2026" and was not adopted; a
+  tutoring role and interests list from that same document were adopted on the user's authority
+  but flagged unverified; a generic motivational quote from it was excluded per the standing
+  no-pseudo-philosophy rule. See CONTENT_TODO.md "Needs the user's own confirmation".
+- Verified: `npx tsc --noEmit` clean, `npx next lint` clean, `npx next build` clean (13 routes,
+  home `/` 3.79 kB / 140 kB First Load JS), full route + email `curl` sweep passing.

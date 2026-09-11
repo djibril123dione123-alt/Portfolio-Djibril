@@ -61,7 +61,7 @@ export function MoreWork() {
 
                   <div className="mt-5 flex items-baseline gap-3">
                     <span className="tabular-nums font-mono text-[0.74rem] text-clay-deep">{p.order}</span>
-                    <span className="font-mono text-[0.66rem] uppercase tracking-[0.14em] text-ink-muted">
+                    <span className="font-mono text-[0.72rem] uppercase tracking-[0.1em] text-ink-muted">
                       {p.kicker}
                     </span>
                   </div>
@@ -72,13 +72,9 @@ export function MoreWork() {
                     {p.positioning}
                   </p>
 
-                  <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5">
-                    {x?.facts.map((f) => (
-                      <li key={f} className="font-mono text-[0.66rem] uppercase tracking-wide text-ink-muted">
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="mt-4 max-w-md text-[0.85rem] leading-relaxed text-ink-muted">
+                    {x?.facts.join(" · ")}
+                  </p>
 
                   <span className="mt-4 inline-flex items-center gap-1.5 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-ink group-hover:text-clay">
                     Read case study

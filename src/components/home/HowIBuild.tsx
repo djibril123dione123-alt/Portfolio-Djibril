@@ -71,16 +71,9 @@ export function HowIBuild() {
                 <div>
                   <h3 className="text-[1.1rem] font-semibold tracking-tight text-ink">{s.k}</h3>
                   <p className="mt-1.5 max-w-xl text-[0.98rem] leading-relaxed text-ink-soft">{s.d}</p>
-                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
-                    {s.seen.map((p) => (
-                      <span
-                        key={p}
-                        className="font-mono text-[0.66rem] uppercase tracking-wide text-clay-deep"
-                      >
-                        ↳ {p}
-                      </span>
-                    ))}
-                  </div>
+                  <p className="mt-3 text-[0.8rem] text-clay-deep">
+                    Seen in <span className="font-medium">{s.seen.join(" · ")}</span>
+                  </p>
                 </div>
               </StaggerItem>
             ))}

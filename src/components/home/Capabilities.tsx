@@ -59,8 +59,8 @@ export function Capabilities() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-auto pt-6 font-mono text-[0.66rem] uppercase tracking-wide text-ink-muted">
-                Seen in&nbsp;&nbsp;{p.seen.join(" · ")}
+              <p className="mt-auto pt-6 text-[0.8rem] text-ink-muted">
+                Seen in <span className="font-medium text-ink">{p.seen.join(" · ")}</span>
               </p>
             </StaggerItem>
           ))}

@@ -69,16 +69,24 @@ export const profile = {
   },
 
   contact: {
+    // Confirmed by the user's final CV (2026-09-11) — supersedes an earlier
+    // djibrildione.com-domain address that appeared only in a draft mockup.
     email: "dionedjibril33@gmail.com",
     linkedin: "https://www.linkedin.com/in/djibril-dione-666450382/",
+    // Stored centrally; deliberately only surfaced on the CV, not the marketing
+    // pages — a phone number belongs on a document handed to one recruiter,
+    // not on an indexed public homepage.
+    phone: "+221 76 579 79 12",
     resumeHref: "/cv-djibril-dione.pdf",
     resumeLabel: "Download résumé (PDF)",
   },
 
   meta: {
     siteName: "Djibril Dione",
-    // Public domain is configured at build time via NEXT_PUBLIC_SITE_URL — see src/lib/site.ts.
-    // No confirmed production domain is owned yet (CONTENT_TODO.md).
+    // Public domain confirmed as djibrildione.com — set NEXT_PUBLIC_SITE_URL to
+    // https://djibrildione.com at deploy time (src/lib/site.ts reads it; the
+    // code keeps a neutral localhost fallback so nothing ships a canonical
+    // before the env var is actually set on the deployment).
     description:
       "Djibril Dione is a product builder and full-stack developer, founder of Samay Këur. He designs and builds digital products that turn fragmented real-world operations into clear, reliable systems.",
     locale: "en",

@@ -27,8 +27,10 @@ const BEATS: Beat[] = [
     visual: "confort",
   },
   {
+    // Deliberate code-switch: the one moment the site drops into French —
+    // the exact thought, in the language it was actually thought in.
     when: "The turn",
-    title: "What if this wasn’t specific to one agency?",
+    title: "Et si ce problème ne concernait pas une seule agence ?",
     body: "The domain was stable across every agency — leases, due dates, partial payments, commission, owner net, documents. Only the surface changed: names, rules, templates, teams. That is the shape of a product.",
     visual: "insight",
     rupture: true,
@@ -65,13 +67,15 @@ const VISUALS: Record<
 function InsightVisual() {
   return (
     <div className="flex h-full w-full flex-col items-center justify-center gap-7 p-8">
-      <div className="rounded-md border border-night-line bg-night-soft px-6 py-4 text-center font-mono text-[0.7rem] uppercase tracking-[0.14em] text-paper/75">
+      <div className="rounded-md border border-night-line bg-night-soft px-6 py-4 text-center font-mono text-[0.76rem] uppercase tracking-[0.12em] text-paper/80">
         One agency
-        <span className="mt-1 block text-[0.6rem] text-night-faint">bespoke tool</span>
+        <span className="mt-1 block text-[0.68rem] normal-case tracking-normal text-night-faint">
+          bespoke tool
+        </span>
       </div>
-      <div className="flex flex-col items-center gap-1 text-clay-soft">
+      <div className="flex flex-col items-center gap-1.5 text-clay-soft">
         <span className="font-mono text-lg">↓</span>
-        <span className="font-mono text-[0.58rem] uppercase tracking-[0.16em] text-night-faint">
+        <span className="max-w-[14rem] text-center text-[0.72rem] normal-case tracking-normal text-night-faint">
           keep the domain, vary the surface
         </span>
       </div>
@@ -79,13 +83,13 @@ function InsightVisual() {
         {["Agency A", "Agency B", "Agency C"].map((a) => (
           <div
             key={a}
-            className="rounded-[6px] border border-clay-soft/60 bg-night-soft px-2 py-3 text-center font-mono text-[0.56rem] uppercase tracking-wide text-clay-soft"
+            className="rounded-[6px] border border-clay-soft/60 bg-night-soft px-2 py-3 text-center font-mono text-[0.66rem] uppercase tracking-wide text-clay-soft"
           >
             {a}
           </div>
         ))}
       </div>
-      <p className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-paper/60">
+      <p className="max-w-[16rem] text-center text-[0.76rem] text-paper/70">
         one multi-organization platform
       </p>
     </div>
@@ -144,11 +148,14 @@ export function OriginStory() {
                   }}
                   className={cn(
                     "border-t border-night-line py-8 lg:py-14",
-                    b.rupture ? "lg:min-h-[58vh]" : "lg:min-h-[52vh]",
+                    b.rupture ? "lg:min-h-[68vh]" : "lg:min-h-[52vh]",
                   )}
                 >
                   <div
-                    className="transition-opacity duration-500 lg:data-[dim=true]:opacity-35"
+                    className={cn(
+                      "transition-opacity duration-500 lg:data-[dim=true]:opacity-35",
+                      b.rupture && "lg:flex lg:h-full lg:flex-col lg:justify-center",
+                    )}
                     data-dim={active !== i}
                   >
                     <span className="font-mono text-label uppercase tracking-[0.12em] text-clay-soft">
@@ -156,17 +163,23 @@ export function OriginStory() {
                     </span>
                     <h3
                       className={cn(
-                        "mt-3 text-balance",
+                        "mt-4 text-balance",
                         b.rupture
-                          ? "font-display text-display-md text-paper"
+                          ? "font-display max-w-2xl text-display-lg text-paper"
                           : "text-display-sm font-semibold text-paper",
                       )}
                     >
-                      {b.rupture ? `“${b.title}”` : b.title}
+                      {b.rupture ? (
+                        <>
+                          &laquo;&nbsp;{b.title}&nbsp;&raquo;
+                        </>
+                      ) : (
+                        b.title
+                      )}
                     </h3>
                     <p
                       className={cn(
-                        "mt-3 max-w-lg leading-relaxed text-paper/70",
+                        "mt-4 max-w-lg leading-relaxed text-paper/70",
                         b.rupture ? "text-[1.02rem]" : "text-[0.96rem]",
                       )}
                     >
@@ -222,7 +235,7 @@ export function OriginStory() {
                               className="block"
                             />
                           </div>
-                          <figcaption className="mt-3 font-mono text-[0.64rem] uppercase tracking-wide text-night-faint">
+                          <figcaption className="mt-3 font-mono text-[0.72rem] uppercase tracking-wide text-night-faint">
                             {v.label}
                           </figcaption>
                         </figure>

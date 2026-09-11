@@ -102,11 +102,7 @@ function Metrics({ block }: { block: Extract<CaseBlock, { kind: "metrics" }> }) 
               {m.value}
             </div>
             <div className="mt-1 text-[0.85rem] text-ink-soft">{m.label}</div>
-            {m.sub ? (
-              <div className="mt-0.5 font-mono text-[0.68rem] uppercase tracking-wide text-ink-muted">
-                {m.sub}
-              </div>
-            ) : null}
+            {m.sub ? <div className="mt-0.5 text-[0.76rem] text-ink-muted">{m.sub}</div> : null}
           </div>
         ))}
       </div>
@@ -266,16 +262,10 @@ export function CaseStudyView({ study }: { study: CaseStudy }) {
               </div>
             ))}
           </dl>
-          <div className="mt-8 flex flex-wrap gap-1.5">
-            {study.stack.map((s) => (
-              <span
-                key={s}
-                className="rounded-[5px] border border-line-strong bg-paper-pure px-2.5 py-1 font-mono text-[0.66rem] uppercase tracking-[0.08em] text-ink-muted"
-              >
-                {s}
-              </span>
-            ))}
-          </div>
+          <p className="mt-8 max-w-2xl text-[0.88rem] leading-relaxed text-ink-muted">
+            <span className="font-mono text-[0.7rem] uppercase tracking-[0.12em]">Stack — </span>
+            {study.stack.join(", ")}
+          </p>
           {study.links.length ? (
             <div className="mt-6 flex flex-wrap gap-5">
               {study.links.map((l) => (

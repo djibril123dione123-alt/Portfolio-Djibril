@@ -16,28 +16,33 @@ const config: Config = {
           cool: "#ECEBE3",
           deep: "#E6DECB",
         },
+        // "Encre" — a blue-graphite ink, deliberately cooler than the warm
+        // ivory paper it sits on (the print-on-paper contrast is the point).
         ink: {
-          DEFAULT: "#18160F",
-          soft: "#3A362E",
-          muted: "#615B4B",
-          faint: "#8A8270",
+          DEFAULT: "#1C2027",
+          soft: "#3B3F48",
+          muted: "#5E6270",
+          faint: "#92959F",
         },
         line: {
           DEFAULT: "#DED7C6",
           strong: "#C7BEA8",
         },
+        // Discreet copper / terracotta — the single accent.
         clay: {
-          DEFAULT: "#B34327",
-          deep: "#8C3119",
-          night: "#6E2A15",
-          soft: "#CB6B4E",
-          wash: "#F1E4DC",
+          DEFAULT: "#A2472A",
+          deep: "#7C331E",
+          night: "#5C2415",
+          soft: "#BE6B4C",
+          wash: "#EFE1D7",
         },
+        // Deep institutional blue-black — used once, for the Origin rupture.
+        // Not a printed pure black: a graphite-navy "ink" tone.
         night: {
-          DEFAULT: "#141109",
-          soft: "#211D12",
-          line: "#3A3524",
-          faint: "#9A917A",
+          DEFAULT: "#12151F",
+          soft: "#1B2030",
+          line: "#2B3244",
+          faint: "#8890A3",
         },
         // Project accent fields — used as real tinted panels inside a project's staging.
         samay: { DEFAULT: "#0E3D2C", wash: "#E7EFE7", line: "#BFD3C4" },

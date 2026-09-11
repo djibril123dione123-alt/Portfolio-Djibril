@@ -4,9 +4,9 @@ import { SmartImage } from "@/components/ui/SmartImage";
 import { CropWindow } from "@/components/product/Product";
 
 const PROOF = [
-  { k: "Samay Këur", v: "Property-management SaaS" },
-  { k: "Mairie de Ouakam", v: "Public-sector digitisation" },
-  { k: "G5 Traders", v: "Commerce operations software" },
+  { k: "Samay Këur", v: "Property-management SaaS", lead: true },
+  { k: "Mairie de Ouakam", v: "Public-sector digitisation", lead: false },
+  { k: "G5 Traders", v: "Commerce operations software", lead: false },
 ];
 
 const LEGEND = [
@@ -52,17 +52,20 @@ export function Hero() {
             </a>
           </div>
 
-          <ul className="mt-11 grid max-w-lg grid-cols-1 gap-px overflow-hidden rounded-md border border-line-strong bg-line-strong sm:grid-cols-3">
+          <ul className="mt-11 flex max-w-lg flex-col gap-3 border-t border-line pt-5 sm:flex-row sm:gap-0 sm:divide-x sm:divide-line">
             {PROOF.map((p) => (
-              <li key={p.k}>
-                <Link
-                  href="/#work"
-                  className="flex h-full flex-col justify-between bg-paper-pure px-3.5 py-3 transition-colors hover:bg-paper"
-                >
-                  <span className="font-mono text-[0.68rem] uppercase tracking-[0.08em] text-ink">
+              <li key={p.k} className="sm:px-5 sm:first:pl-0">
+                <Link href="/#work" className="group block">
+                  <span
+                    className={
+                      p.lead
+                        ? "text-[0.92rem] font-semibold text-ink"
+                        : "text-[0.88rem] text-ink-muted group-hover:text-ink"
+                    }
+                  >
                     {p.k}
                   </span>
-                  <span className="mt-1.5 text-[0.78rem] leading-snug text-ink-muted">{p.v}</span>
+                  <span className="block text-[0.78rem] leading-snug text-ink-muted">{p.v}</span>
                 </Link>
               </li>
             ))}
@@ -89,7 +92,7 @@ export function Hero() {
             />
           </figure>
 
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <div className="mt-5 grid gap-4 sm:grid-cols-2">
             <CropWindow
               src="/projects/samay-keur/paiement-partiel.webp"
               alt="Detail: a partial rent payment resolved into remaining balance, commission and net to owner."
@@ -110,7 +113,7 @@ export function Hero() {
             />
           </div>
 
-          <ul className="mt-5 space-y-1.5">
+          <ul className="mt-6 space-y-1.5">
             {LEGEND.map((l) => (
               <li key={l} className="flex items-baseline gap-2.5 annotation">
                 <span aria-hidden className="mt-1 h-1 w-1 shrink-0 rounded-full bg-clay" />

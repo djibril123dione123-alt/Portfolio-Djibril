@@ -32,26 +32,23 @@ export function WorkEyebrow({
   );
 }
 
-/** Meta line — a couple of plain items plus an optional highlighted status pill. */
+/** Meta line — read as a sentence, not a row of badges. One highlighted status. */
 export function MetaRow({ items, status }: { items: string[]; status?: string }) {
   return (
-    <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2.5">
+    <p className="mt-5 max-w-2xl text-[0.9rem] leading-relaxed text-ink-muted">
       {items.map((it, i) => (
-        <span
-          key={i}
-          className="flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-ink-muted"
-        >
-          {i > 0 ? <span aria-hidden className="h-1 w-1 rounded-full bg-line-strong" /> : null}
+        <span key={i}>
+          {i > 0 ? <span className="px-2 text-line-strong" aria-hidden>·</span> : null}
           {it}
         </span>
       ))}
       {status ? (
-        <span className="inline-flex items-center gap-2 rounded-full border border-clay/40 bg-clay-wash px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-clay-deep">
-          <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-clay" />
-          {status}
-        </span>
+        <>
+          <span className="px-2 text-line-strong" aria-hidden>·</span>
+          <span className="font-medium text-clay-deep">{status}</span>
+        </>
       ) : null}
-    </div>
+    </p>
   );
 }
 

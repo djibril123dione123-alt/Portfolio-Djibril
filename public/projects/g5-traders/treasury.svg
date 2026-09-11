@@ -2,25 +2,25 @@
   <defs>
     <linearGradient id="g5bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#F6F3EC"/>
-      <stop offset="1" stop-color="#EEEADF"/>
+      <stop offset="1" stop-color="#EFEADD"/>
     </linearGradient>
   </defs>
   <rect width="1200" height="750" fill="url(#g5bg)"/>
-  <rect x="0" y="0" width="1200" height="6" fill="#B34327"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#A2472A"/>
 
-  <text x="72" y="96" font-family="ui-monospace, SFMono-Regular, monospace" font-size="19" letter-spacing="3" fill="#8C3119">G5 TRADERS — FIGURES, NOT A SCREEN</text>
-  <text x="72" y="150" font-family="Georgia, 'Times New Roman', serif" font-size="46" fill="#181611">Operational snapshot</text>
-  <text x="72" y="188" font-family="ui-monospace, monospace" font-size="17" fill="#6B6456">25 August 2026 · 16:31 · sales still running</text>
+  <text x="72" y="96" font-family="ui-monospace, SFMono-Regular, monospace" font-size="19" letter-spacing="3" fill="#7C331E">G5 TRADERS — FIGURES, NOT A SCREEN</text>
+  <text x="72" y="150" font-family="Georgia, 'Times New Roman', serif" font-size="46" fill="#1C2027">Operational snapshot</text>
+  <text x="72" y="188" font-family="ui-monospace, monospace" font-size="17" fill="#5E6270">25 August 2026 · 16:31 · sales still running</text>
 
   <line x1="72" y1="228" x2="1128" y2="228" stroke="#DDD6C6" stroke-width="1"/>
 
-  <g font-family="Georgia, serif" fill="#181611">
+  <g font-family="Georgia, serif" fill="#1C2027">
     <text x="72"  y="312" font-size="52">237 500</text>
     <text x="72"  y="500" font-size="52">170 500</text>
     <text x="638" y="312" font-size="52">227 500</text>
     <text x="638" y="500" font-size="52">152 705</text>
   </g>
-  <g font-family="ui-monospace, monospace" font-size="15" letter-spacing="1.5" fill="#6B6456">
+  <g font-family="ui-monospace, monospace" font-size="15" letter-spacing="1.5" fill="#5E6270">
     <text x="74" y="344">TOTAL / NET TREASURY · FCFA</text>
     <text x="74" y="532">COMMON CASH BOX · FCFA</text>
     <text x="640" y="344">TOTAL SALES · FCFA</text>
@@ -30,7 +30,7 @@
   <line x1="72" y1="392" x2="1128" y2="392" stroke="#DDD6C6" stroke-width="1"/>
   <line x1="600" y1="252" x2="600" y2="560" stroke="#DDD6C6" stroke-width="1"/>
 
-  <g font-family="ui-monospace, monospace" font-size="16" fill="#181611">
+  <g font-family="ui-monospace, monospace" font-size="16" fill="#1C2027">
     <text x="72" y="628">140 units sold</text>
     <text x="360" y="628">≈181 000 stock at cost</text>
     <text x="760" y="628">0 transit debt</text>
@@ -38,5 +38,5 @@
   </g>
 
   <line x1="72" y1="668" x2="1128" y2="668" stroke="#DDD6C6" stroke-width="1"/>
-  <text x="72" y="706" font-family="ui-monospace, monospace" font-size="14" fill="#948C7B">Editorial visualisation of the venture's figures — not the app UI. Point-in-time reading, not final results.</text>
+  <text x="72" y="706" font-family="ui-monospace, monospace" font-size="14" fill="#92959F">Editorial visualisation of the venture's figures — not the app UI. Point-in-time reading, not final results.</text>
 </svg>

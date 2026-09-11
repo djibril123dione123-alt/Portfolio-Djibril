@@ -7,12 +7,15 @@ export function pageMeta(opts: {
   description: string;
   path?: string;
   ogImage?: string;
+  /** Bypass the root layout's "%s — Djibril Dione" template — use when
+   * `title` already is the full, final title (the home page only). */
+  absoluteTitle?: boolean;
 }): Metadata {
   const path = opts.path ?? "/";
   const image = opts.ogImage ?? "/og/default.png";
 
   const meta: Metadata = {
-    title: opts.title,
+    title: opts.absoluteTitle ? { absolute: opts.title } : opts.title,
     description: opts.description,
     openGraph: {
       title: opts.title,

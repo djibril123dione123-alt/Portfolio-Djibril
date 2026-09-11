@@ -8,6 +8,7 @@ const SECTIONS = [
   { label: "How I build", href: "/#method" },
   { label: "Capabilities", href: "/#about" },
   { label: "About", href: "/about" },
+  { label: "CV (FR)", href: "/cv" },
 ];
 
 export function SiteFooter() {

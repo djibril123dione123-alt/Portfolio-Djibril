@@ -55,6 +55,12 @@
     border-radius: 3px;
   }
 
+  /* On dark / accent grounds the copper ring loses contrast — switch to paper. */
+  .bg-night :focus-visible,
+  .bg-clay-night :focus-visible {
+    outline-color: theme("colors.paper.pure");
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -260,3 +266,43 @@
     padding-bottom: clamp(4rem, 8vw, 7rem);
   }
 }
+
+/* ---- CV — print composition ---- */
+.cv-page {
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+@media screen {
+  .cv-page {
+    box-shadow: theme("boxShadow.float");
+  }
+}
+
+@media print {
+  /* The page's own padding (below) is the only margin — @page stays at 0 so
+     the two don't stack and push a one-page CV onto a second sheet. */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  .cv-page {
+    box-shadow: none !important;
+    border: none !important;
+    max-width: none !important;
+    margin: 0 !important;
+    width: 210mm !important;
+  }
+
+  .qr-print-size {
+    width: 24mm !important;
+    height: 24mm !important;
+  }
+}
+

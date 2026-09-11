@@ -15,6 +15,9 @@ export const metadata: Metadata = pageMeta({
   description: profile.meta.description,
   path: "/",
   ogImage: "/og/default.png",
+  // Already the full title — bypass the root layout's "%s — Djibril Dione"
+  // template so the tab title isn't "… — Djibril Dione — Djibril Dione".
+  absoluteTitle: true,
 });
 
 export default function HomePage() {
