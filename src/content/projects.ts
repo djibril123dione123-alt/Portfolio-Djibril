@@ -77,12 +77,10 @@ export const projects: ProjectSummary[] = [
     stack: ["React", "TypeScript", "Tailwind CSS", "Supabase"],
     links: [{ label: "g5traders.lovable.app", href: "https://g5traders.lovable.app", kind: "live" }],
     cover: {
-      // Editorial visualisation, not a screenshot — see note in caseStudies/g5Traders.ts.
-      // Swap for /projects/g5-traders/dashboard.webp once the real capture is in the workspace.
-      src: "/projects/g5-traders/treasury.svg",
-      alt: "Editorial data visualisation of the G5 Traders 25 August 2026 figures — not a screenshot of the app.",
-      width: 1200,
-      height: 750,
+      src: "/projects/g5-traders/dashboard.webp",
+      alt: "G5 Traders dashboard: net treasury, gross margin, total sales and stock value.",
+      width: 1920,
+      height: 917,
     },
     tier: "selected",
     hasCaseStudy: true,
@@ -102,10 +100,10 @@ export const projects: ProjectSummary[] = [
       { label: "librairie-al-furqan.vercel.app", href: "https://librairie-al-furqan.vercel.app", kind: "live" },
     ],
     cover: {
-      src: "/projects/al-furqan/cover.svg",
-      alt: "Librairie Al Furqan — catalogue, search and WhatsApp checkout for an Islamic bookshop.",
-      width: 1200,
-      height: 750,
+      src: "/projects/al-furqan/catalogue.webp",
+      alt: "Librairie Al Furqan catalogue: category and author filters over a grid of Islamic books.",
+      width: 1920,
+      height: 917,
     },
     tier: "more",
     hasCaseStudy: true,

@@ -11,7 +11,7 @@ const EXTRA: Record<
   "al-furqan": {
     field: "border-commerce-line bg-commerce-wash",
     line: "bg-commerce",
-    note: "Flow diagram · catalogue → cart → WhatsApp checkout",
+    note: "Real product screenshot · catalogue, cart, WhatsApp checkout",
     facts: ["Solo design & build", "Next.js · Supabase", "~25,240 localities structured", "Code complete · deployed"],
   },
   "nur-al-bindjib": {

@@ -27,6 +27,18 @@ export function WindowChrome({
   );
 }
 
+const WINDOW_LABELS: [string, string][] = [
+  ["mairie", "Microsoft Access"],
+  ["samay-keur", "app.samaykeur.com"],
+  ["g5-traders", "g5traders.lovable.app"],
+  ["al-furqan", "librairie-al-furqan.vercel.app"],
+  ["nur-al-bindjib", "nur-al-bindjib.vercel.app"],
+];
+
+function windowLabel(src: string): string | undefined {
+  return WINDOW_LABELS.find(([needle]) => src.includes(needle))?.[1];
+}
+
 export function CaseFigure({
   fig,
   frame = "plain",
@@ -60,11 +72,7 @@ export function CaseFigure({
   return (
     <figure className={widthClass}>
       {frame === "window" ? (
-        <WindowChrome
-          label={fig.src.includes("mairie") ? "Microsoft Access" : "app.samaykeur.com"}
-        >
-          {img}
-        </WindowChrome>
+        <WindowChrome label={windowLabel(fig.src)}>{img}</WindowChrome>
       ) : (
         <div className="panel-shot">{img}</div>
       )}

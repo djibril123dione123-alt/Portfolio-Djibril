@@ -1,16 +1,5 @@
 import type { CaseStudy } from "./types";
 
-/**
- * G5 Traders has real product screenshots that will be added to the workspace.
- * SWAP WHEN AVAILABLE: replace the `hero` figure below (and the card cover in
- * projects.ts) with:
- *   src: "/projects/g5-traders/dashboard.webp"  (or treasury.webp)
- *   width/height: the real pixel size
- * and drop the "editorial visualization" wording from alt/caption.
- * Until then the hero is an EDITORIAL DATA VISUALISATION built from the Master
- * Profile snapshot figures — it is not, and is not presented as, the app UI.
- */
-
 export const g5Traders: CaseStudy = {
   slug: "g5-traders",
   name: "G5 Traders",
@@ -23,12 +12,11 @@ export const g5Traders: CaseStudy = {
   stack: ["React", "TypeScript", "Tailwind CSS", "Supabase", "Dashboard / operational reporting"],
   links: [{ label: "g5traders.lovable.app", href: "https://g5traders.lovable.app", kind: "live" }],
   hero: {
-    src: "/projects/g5-traders/treasury.svg",
-    alt: "Editorial data visualisation of the G5 Traders 25 August 2026 snapshot: total treasury, common cash box, total sales and gross margin. Not a screenshot of the application.",
-    caption:
-      "Editorial visualisation of the venture's figures on 25 August 2026, 16:31 — not the app interface. Sales were still running.",
-    width: 1200,
-    height: 750,
+    src: "/projects/g5-traders/dashboard.webp",
+    alt: "G5 Traders dashboard: net treasury, gross margin, total sales, stock value, recent sales and seller performance.",
+    caption: "The dashboard — treasury, margin, sales and stock in one operational view.",
+    width: 1920,
+    height: 917,
   },
   facts: [
     { k: "Role", v: "Project Lead (business) & solo developer (software)" },
@@ -76,6 +64,16 @@ export const g5Traders: CaseStudy = {
       ],
     },
     {
+      kind: "figure",
+      src: "/projects/g5-traders/inventaire.webp",
+      alt: "G5 Traders inventory screen: stock levels, unit cost, sale price, margin and progress per product.",
+      caption: "Inventory — stock, cost, sale price and margin, per product.",
+      bleed: "wide",
+      frame: "window",
+      width: 1920,
+      height: 917,
+    },
+    {
       kind: "metrics",
       note:
         "Operational snapshot on 25 August 2026 (times shown are when each figure was read). Sales were still in progress — these are a point-in-time reading of an active venture, not final results.",
@@ -98,6 +96,16 @@ export const g5Traders: CaseStudy = {
         "The initial purchase plan put total investment at 263 100 FCFA, with an estimated revenue of 945 000 FCFA and an estimated profit of 681 900 FCFA.",
         "**Those last two figures are projections and I don't present them as achieved.** The venture is still selling. What is real is the snapshot above: what had actually been sold, collected and margined by 25 August 2026.",
       ],
+    },
+    {
+      kind: "figure",
+      src: "/projects/g5-traders/plan-achat.webp",
+      alt: "The original purchase-and-forecast spreadsheet: supplier and transit cost per product, unit prices, quantities, investment and estimated revenue/profit.",
+      caption: "The purchase plan itself — where the 945 000 / 681 900 FCFA projections above actually come from.",
+      bleed: "wide",
+      frame: "plain",
+      width: 1914,
+      height: 910,
     },
     {
       kind: "prose",

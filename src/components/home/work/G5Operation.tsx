@@ -55,14 +55,22 @@ export function G5Operation() {
               </ul>
             </div>
 
-            {/* right — operational snapshot */}
+            {/* right — the real dashboard */}
             <div>
               <RevealMedia className="panel-shot" delay={0.05}>
+                <div className="chrome-bar">
+                  <span className="chrome-dot" />
+                  <span className="chrome-dot" />
+                  <span className="chrome-dot" />
+                  <span className="ml-2 font-mono text-[0.64rem] text-ink-muted">
+                    g5traders.lovable.app — dashboard
+                  </span>
+                </div>
                 <SmartImage
-                  src="/projects/g5-traders/treasury.svg"
-                  alt="Editorial data visualisation of the G5 Traders 25 August 2026 figures — not a screenshot of the app."
-                  width={1200}
-                  height={750}
+                  src="/projects/g5-traders/dashboard.webp"
+                  alt="G5 Traders dashboard: net treasury, gross margin, total sales, stock value, recent sales and seller performance."
+                  width={1920}
+                  height={917}
                   sizes="(max-width: 1024px) 100vw, 44vw"
                   className="block w-full"
                 />
@@ -77,7 +85,6 @@ export function G5Operation() {
               </div>
               <p className="annotation mt-3 text-ink-muted">
                 Point-in-time snapshot, 25 Aug 2026, while sales were still running — not final results.
-                Real product screenshots replace this visual when added.
               </p>
             </div>
           </div>

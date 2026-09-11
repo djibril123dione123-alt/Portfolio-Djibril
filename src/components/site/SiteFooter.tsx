@@ -32,6 +32,12 @@ export function SiteFooter() {
               {profile.contact.email}
             </a>
             <a
+              href={`tel:${profile.contact.phone.replace(/\s+/g, "")}`}
+              className="link-underline text-ink-soft hover:text-ink"
+            >
+              {profile.contact.phone}
+            </a>
+            <a
               href={profile.contact.linkedin}
               target="_blank"
               rel="noreferrer"
