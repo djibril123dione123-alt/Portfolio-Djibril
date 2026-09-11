@@ -79,7 +79,14 @@ export function Hero() {
               <span className="chrome-dot" />
               <span className="chrome-dot" />
               <span className="chrome-dot" />
-              <span className="ml-2 font-mono text-[0.64rem] text-ink-muted">app.samaykeur.com</span>
+              <a
+                href="https://app.samaykeur.com"
+                target="_blank"
+                rel="noreferrer"
+                className="ml-2 font-mono text-[0.64rem] text-ink-muted underline-offset-2 hover:text-clay-deep hover:underline"
+              >
+                app.samaykeur.com ↗
+              </a>
             </div>
             <SmartImage
               src="/projects/samay-keur/dashboard.webp"
@@ -87,7 +94,7 @@ export function Hero() {
               width={1887}
               height={861}
               priority
-              sizes="(max-width: 1024px) 92vw, 46vw"
+              sizes="(max-width: 1024px) 100vw, 46vw"
               className="block w-full"
             />
           </figure>

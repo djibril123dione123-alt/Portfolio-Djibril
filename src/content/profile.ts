@@ -73,6 +73,7 @@ export const profile = {
     // djibrildione.com-domain address that appeared only in a draft mockup.
     email: "dionedjibril33@gmail.com",
     linkedin: "https://www.linkedin.com/in/djibril-dione-666450382/",
+    github: "https://github.com/djibril123dione123-alt",
     // Stored centrally; deliberately only surfaced on the CV, not the marketing
     // pages — a phone number belongs on a document handed to one recruiter,
     // not on an indexed public homepage.

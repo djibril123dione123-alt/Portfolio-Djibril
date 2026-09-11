@@ -117,6 +117,14 @@ export default function AboutPage() {
               >
                 LinkedIn
               </a>
+              <a
+                href={profile.contact.github}
+                target="_blank"
+                rel="noreferrer"
+                className="link-underline text-[0.95rem]"
+              >
+                GitHub
+              </a>
               <a href={profile.contact.resumeHref} className="link-underline text-[0.95rem]">
                 {profile.contact.resumeLabel}
               </a>

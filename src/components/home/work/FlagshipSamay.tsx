@@ -46,7 +46,7 @@ export function FlagshipSamay() {
                   alt="Samay Këur agency dashboard: rent collection volume, arrears to recover, owner net, agency commission and portfolio occupancy."
                   width={D.w}
                   height={D.h}
-                  sizes="(max-width: 1024px) 92vw, 74vw"
+                  sizes="(max-width: 1024px) 100vw, 74vw"
                   className="block"
                 />
               </div>

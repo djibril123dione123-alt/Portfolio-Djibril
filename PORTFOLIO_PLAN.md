@@ -134,3 +134,31 @@ Originals were never modified or moved. Processing scripts in `scratchpad/`.
   no-pseudo-philosophy rule. See CONTENT_TODO.md "Needs the user's own confirmation".
 - Verified: `npx tsc --noEmit` clean, `npx next lint` clean, `npx next build` clean (13 routes,
   home `/` 3.79 kB / 140 kB First Load JS), full route + email `curl` sweep passing.
+
+---
+
+## Audit pass — targeted fixes on the shipped design (no redesign)
+
+Ran as an explicit audit-first pass (not a rebuild) against the deployed
+`djibril-dione.vercel.app`. Conclusion: the existing design, the Samay Këur case study depth,
+the Origin narrative, the claim discipline and the product-evidence system were already at a
+high bar and were left untouched. Five concrete, low-risk fixes were made:
+
+- **Footer navigation bug**: "Capabilities" linked to `/#about` (the About-preview section, not
+  Capabilities). Added `id="capabilities"` to `Capabilities.tsx` and corrected the footer link.
+- **GitHub added to the link ecosystem**: `profile.contact.github` → footer + `/about`. Was
+  previously "not provided"; now supplied by the user.
+- **`app.samaykeur.com` made directly clickable from the Hero** (was inert label text in the
+  chrome-bar) — the real product is now one click from the homepage, not only from the full
+  case study.
+- **`theme-color` cohesion**: `layout.tsx` viewport (dark) and `site.webmanifest` still carried
+  the pre-palette-pass warm near-black (`#141109`); aligned to the current `night` token
+  (`#12151F`).
+- **`/cv` accessibility**: the page is fully French but inherited `<html lang="en">` from the
+  root layout (Next.js App Router can't vary `lang` per route). Added a small client-only
+  `SetLang` component that corrects it to `"fr"` while `/cv` is mounted.
+- Minor: bumped `sizes` on the two most important product screenshots (Hero, FlagshipSamay)
+  from `92vw` to `100vw` on mobile so pinch-zoom on the flagship proof stays crisp.
+
+Verified: `tsc --noEmit`, `next lint`, `next build` all clean; full route sweep 200; confirmed
+in-browser that the footer link, GitHub link, Hero link and `/cv` lang fix all work as intended.

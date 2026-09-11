@@ -6,7 +6,7 @@ const SECTIONS = [
   { label: "Selected work", href: "/#work" },
   { label: "Origin", href: "/#origin" },
   { label: "How I build", href: "/#method" },
-  { label: "Capabilities", href: "/#about" },
+  { label: "Capabilities", href: "/#capabilities" },
   { label: "About", href: "/about" },
   { label: "CV (FR)", href: "/cv" },
 ];
@@ -38,6 +38,14 @@ export function SiteFooter() {
               className="link-underline text-ink-soft hover:text-ink"
             >
               LinkedIn ↗
+            </a>
+            <a
+              href={profile.contact.github}
+              target="_blank"
+              rel="noreferrer"
+              className="link-underline text-ink-soft hover:text-ink"
+            >
+              GitHub ↗
             </a>
             <a href={profile.contact.resumeHref} className="link-underline text-ink-soft hover:text-ink">
               Résumé (PDF)

@@ -5,6 +5,7 @@ import { pageMeta } from "@/lib/seo";
 import { hasPublicDomain, absoluteUrl } from "@/lib/site";
 import { PortfolioQrBlock } from "@/components/ui/PortfolioQr";
 import { PrintButton } from "@/components/cv/PrintButton";
+import { SetLang } from "@/components/cv/SetLang";
 
 export const metadata: Metadata = pageMeta({
   title: "CV",
@@ -31,6 +32,7 @@ function PageMark({ n }: { n: 1 | 2 }) {
 export default function CvPage() {
   return (
     <>
+      <SetLang lang="fr" />
       <PrintButton />
       <main id="main" className="min-h-screen bg-paper-cool py-10 print:bg-white print:py-0">
         <article className="cv-page mx-auto max-w-[210mm] bg-paper-pure px-[14mm] py-[15mm] text-ink sm:px-[18mm] sm:py-[16mm]">

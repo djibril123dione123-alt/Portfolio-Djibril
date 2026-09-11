@@ -24,7 +24,7 @@ const PILLARS = [
 
 export function Capabilities() {
   return (
-    <section className="border-b border-line bg-paper py-section">
+    <section id="capabilities" className="scroll-mt-24 border-b border-line bg-paper py-section">
       <div className="container-wide">
         <Reveal>
           <div className="flex items-center gap-4">
